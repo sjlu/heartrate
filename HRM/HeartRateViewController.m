@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSMutableArray *heartRateMonitors;
 @property (nonatomic, strong) UILabel *heartRateLabel;
 @property (nonatomic, strong) UILabel *zoneLabel;
+@property (nonatomic, strong) UILabel *statusLabel;
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @end
@@ -21,36 +22,44 @@
 @synthesize heartRateMonitors = _heartRateMonitors;
 @synthesize heartRateLabel = _heartRateLabel;
 @synthesize zoneLabel = _zoneLabel;
+@synthesize statusLabel = _statusLabel;
 @synthesize manager = _manager;
 @synthesize peripheral = _peripheral;
 
-- (void)loadView
-{
-    [super loadView];
-    // Set the view background.
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
-    self.heartRateLabel.font = [UIFont fontWithName:@"Avenir" size:144];
-    self.heartRateLabel.text = @"";
-    self.heartRateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth+UIViewAutoresizingFlexibleHeight;
-    self.heartRateLabel.textAlignment = UITextAlignmentCenter;
-    self.heartRateLabel.backgroundColor = [UIColor clearColor];
-    self.heartRateLabel.textColor = [UIColor blackColor];
-    [self.view addSubview:self.heartRateLabel];
+- (void)viewDidLoad {
+  [super viewDidLoad];
 
-    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 305, 320, 30)];
-    self.zoneLabel.font = [UIFont fontWithName:@"Avenir" size:24];
-    self.zoneLabel.textAlignment = UITextAlignmentCenter;
-    self.zoneLabel.backgroundColor = [UIColor clearColor];
-    self.zoneLabel.textColor = [UIColor blackColor];
-    self.zoneLabel.text = @"";
+  self.view.backgroundColor = [UIColor whiteColor];
 
-    [self.view addSubview:self.zoneLabel];
+  self.statusLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
+  self.statusLabel.font = [UIFont fontWithName:@"Avenir" size:32];
+  self.statusLabel.text = @"Searching...";
+  self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth+UIViewAutoresizingFlexibleHeight;
+  self.statusLabel.textAlignment = NSTextAlignmentCenter;
+  self.statusLabel.backgroundColor = [UIColor clearColor];
+  self.statusLabel.textColor = [UIColor blackColor];
+  [self.view addSubview:self.statusLabel];
 
-    self.heartRateMonitors = [NSMutableArray array];
-    self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];    
-    [self startScan];
+  self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
+  self.heartRateLabel.font = [UIFont fontWithName:@"Avenir" size:144];
+  self.heartRateLabel.text = @"";
+  self.heartRateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth+UIViewAutoresizingFlexibleHeight;
+  self.heartRateLabel.textAlignment = NSTextAlignmentCenter;
+  self.heartRateLabel.backgroundColor = [UIColor clearColor];
+  self.heartRateLabel.textColor = [UIColor blackColor];
+  [self.view addSubview:self.heartRateLabel];
+
+  self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 305, 320, 30)];
+  self.zoneLabel.font = [UIFont fontWithName:@"Avenir" size:24];
+  self.zoneLabel.textAlignment = NSTextAlignmentCenter;
+  self.zoneLabel.backgroundColor = [UIColor clearColor];
+  self.zoneLabel.textColor = [UIColor blackColor];
+  self.zoneLabel.text = @"";
+  [self.view addSubview:self.zoneLabel];
+
+  self.heartRateMonitors = [NSMutableArray array];
+  self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+  [self startScan];
 }
 
 - (void)viewDidUnload
@@ -214,6 +223,7 @@ didDiscoverCharacteristicsForService:(CBService *)service
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]) {
                 [self.peripheral setNotifyValue:YES forCharacteristic:aChar];
                 NSLog(@"Found a Heart Rate Measurement Characteristic");
+                self.statusLabel.text = @"Connecting...";
             }
             
             // Read body sensor location
@@ -269,31 +279,31 @@ didDiscoverCharacteristicsForService:(CBService *)service
     NSLog(@"bpm %d", bpm);
     self.heartRateLabel.text = [NSString stringWithFormat:@"%d", bpm];
 
-    const uint16_t max_bpm = 160;
+    const uint16_t max_bpm = 180;
 
     if (bpm > max_bpm) {
       self.zoneLabel.text = @"Max";
-      self.view.backgroundColor = [UIColor colorWithRed:(247/255.f) green:(70/255.f) blue:(64/255.f) alpha:1];
+      self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
       self.zoneLabel.textColor = [UIColor whiteColor];
       self.heartRateLabel.textColor = [UIColor whiteColor];
     } else if (bpm > max_bpm-20) {
       self.zoneLabel.text = @"Anaerobic";
-      self.view.backgroundColor = [UIColor colorWithRed:(247/255.f) green:(70/255.f) blue:(64/255.f) alpha:1];
+      self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
       self.zoneLabel.textColor = [UIColor whiteColor];
       self.heartRateLabel.textColor = [UIColor whiteColor];
     } else if (bpm > max_bpm-40) {
       self.zoneLabel.text = @"Aerobic";
-      self.view.backgroundColor = [UIColor colorWithRed:(26/255.f) green:(93/255.f) blue:(161/255.f) alpha:1];
+      self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
       self.zoneLabel.textColor = [UIColor whiteColor];
       self.heartRateLabel.textColor = [UIColor whiteColor];
     } else if (bpm > max_bpm-60) {
       self.zoneLabel.text = @"Weight Control";
-      self.view.backgroundColor = [UIColor colorWithRed:(26/255.f) green:(93/255.f) blue:(161/255.f) alpha:1];
+      self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
       self.zoneLabel.textColor = [UIColor whiteColor];
       self.heartRateLabel.textColor = [UIColor whiteColor];
     } else if (bpm > max_bpm-80) {
       self.zoneLabel.text = @"Moderate";
-      self.view.backgroundColor = [UIColor colorWithRed:(34/255.f) green:(125/255.f) blue:(218/255.f) alpha:1];
+      self.view.backgroundColor = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
       self.zoneLabel.textColor = [UIColor whiteColor];
       self.heartRateLabel.textColor = [UIColor whiteColor];
       [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -304,6 +314,8 @@ didDiscoverCharacteristicsForService:(CBService *)service
       self.heartRateLabel.textColor = [UIColor blackColor];
       [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     }
+
+    self.statusLabel.text = @"";
 }
 
 // Invoked upon completion of a -[readValueForCharacteristic:] request 
