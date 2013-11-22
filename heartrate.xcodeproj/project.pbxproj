@@ -7,18 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC30183F05C7000D233A /* UINavigationController+Factory.m */; };
+		0948EC37183F06D1000D233A /* UIColor+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC36183F06D1000D233A /* UIColor+HeartRate.m */; };
+		0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC39183F08C1000D233A /* UIView+Utility.m */; };
+		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
+		09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
+		09DBC493183F00D10076EC06 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48C183F00D10076EC06 /* HockeySDK.xcconfig */; };
+		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
+		09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC497183F013A0076EC06 /* CoreText.framework */; };
+		09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC498183F013A0076EC06 /* QuartzCore.framework */; };
+		09DBC49D183F013A0076EC06 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC499183F013A0076EC06 /* Security.framework */; };
+		09DBC49E183F013A0076EC06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */; };
+		09DBC4A7183F02CC0076EC06 /* UIImage+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DBC4A6183F02CC0076EC06 /* UIImage+Factory.m */; };
 		1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507923D183E6EA0003DF9E3 /* Images.xcassets */; };
 		22A8518B153E8F3E000B4042 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518A153E8F3E000B4042 /* UIKit.framework */; };
 		22A8518D153E8F3E000B4042 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518C153E8F3E000B4042 /* Foundation.framework */; };
 		22A8518F153E8F3E000B4042 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518E153E8F3E000B4042 /* CoreGraphics.framework */; };
-		22A85195153E8F3E000B4042 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22A85193153E8F3E000B4042 /* InfoPlist.strings */; };
 		22A85197153E8F3E000B4042 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A85196153E8F3E000B4042 /* main.m */; };
 		22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A8519A153E8F3E000B4042 /* AppDelegate.m */; };
 		22A851A2153E8F4F000B4042 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A851A1153E8F4F000B4042 /* CoreBluetooth.framework */; };
-		22A851AE153E964B000B4042 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A851AC153E964A000B4042 /* HeartRateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0948EC2F183F05C7000D233A /* UINavigationController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Factory.h"; path = "Categories/UINavigationController+Factory.h"; sourceTree = "<group>"; };
+		0948EC30183F05C7000D233A /* UINavigationController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Factory.m"; path = "Categories/UINavigationController+Factory.m"; sourceTree = "<group>"; };
+		0948EC35183F06D1000D233A /* UIColor+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HeartRate.h"; path = "Categories/UIColor+HeartRate.h"; sourceTree = "<group>"; };
+		0948EC36183F06D1000D233A /* UIColor+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HeartRate.m"; path = "Categories/UIColor+HeartRate.m"; sourceTree = "<group>"; };
+		0948EC38183F08C1000D233A /* UIView+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Utility.h"; path = "Categories/UIView+Utility.h"; sourceTree = "<group>"; };
+		0948EC39183F08C1000D233A /* UIView+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Utility.m"; path = "Categories/UIView+Utility.m"; sourceTree = "<group>"; };
+		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
+		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
+		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		09DBC48C183F00D10076EC06 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
+		09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
+		09DBC497183F013A0076EC06 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		09DBC498183F013A0076EC06 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		09DBC499183F013A0076EC06 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		09DBC4A5183F02CC0076EC06 /* UIImage+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Factory.h"; path = "Categories/UIImage+Factory.h"; sourceTree = "<group>"; };
+		09DBC4A6183F02CC0076EC06 /* UIImage+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Factory.m"; path = "Categories/UIImage+Factory.m"; sourceTree = "<group>"; };
 		1507923D183E6EA0003DF9E3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = heartrate/Images.xcassets; sourceTree = "<group>"; };
 		22A85186153E8F3E000B4042 /* heartrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heartrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A8518A153E8F3E000B4042 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -30,8 +57,6 @@
 		22A85199153E8F3E000B4042 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		22A8519A153E8F3E000B4042 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22A851A1153E8F4F000B4042 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		22A851AB153E964A000B4042 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateViewController.h; sourceTree = "<group>"; };
-		22A851AC153E964A000B4042 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,9 +64,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */,
+				09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */,
+				09DBC49D183F013A0076EC06 /* Security.framework in Frameworks */,
+				09DBC49E183F013A0076EC06 /* SystemConfiguration.framework in Frameworks */,
 				22A851A2153E8F4F000B4042 /* CoreBluetooth.framework in Frameworks */,
 				22A8518B153E8F3E000B4042 /* UIKit.framework in Frameworks */,
 				22A8518D153E8F3E000B4042 /* Foundation.framework in Frameworks */,
+				09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */,
 				22A8518F153E8F3E000B4042 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,11 +79,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09722953183EFBD5003C4421 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				09722954183EFBFC003C4421 /* HeartRateViewController.h */,
+				09722955183EFBFC003C4421 /* HeartRateViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		09722957183EFED8003C4421 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0948EC35183F06D1000D233A /* UIColor+HeartRate.h */,
+				0948EC36183F06D1000D233A /* UIColor+HeartRate.m */,
+				09DBC4A5183F02CC0076EC06 /* UIImage+Factory.h */,
+				09DBC4A6183F02CC0076EC06 /* UIImage+Factory.m */,
+				0948EC2F183F05C7000D233A /* UINavigationController+Factory.h */,
+				0948EC30183F05C7000D233A /* UINavigationController+Factory.m */,
+				0948EC38183F08C1000D233A /* UIView+Utility.h */,
+				0948EC39183F08C1000D233A /* UIView+Utility.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		09DBC485183F009F0076EC06 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				09DBC486183F00D10076EC06 /* HockeySDK-iOS-3.5.0 */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		09DBC486183F00D10076EC06 /* HockeySDK-iOS-3.5.0 */ = {
+			isa = PBXGroup;
+			children = (
+				09DBC489183F00D10076EC06 /* HockeySDK.embeddedframework */,
+			);
+			path = "HockeySDK-iOS-3.5.0";
+			sourceTree = "<group>";
+		};
+		09DBC489183F00D10076EC06 /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				09DBC48A183F00D10076EC06 /* HockeySDK.framework */,
+				09DBC48B183F00D10076EC06 /* Resources */,
+			);
+			path = HockeySDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		09DBC48B183F00D10076EC06 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				09DBC48C183F00D10076EC06 /* HockeySDK.xcconfig */,
+				09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		22A8517B153E8F3E000B4042 = {
 			isa = PBXGroup;
 			children = (
 				1507923D183E6EA0003DF9E3 /* Images.xcassets */,
-				22A851A1153E8F4F000B4042 /* CoreBluetooth.framework */,
+				09DBC485183F009F0076EC06 /* ThirdParty */,
 				22A85190153E8F3E000B4042 /* HRM */,
 				22A85189153E8F3E000B4042 /* Frameworks */,
 				22A85187153E8F3E000B4042 /* Products */,
@@ -71,6 +159,11 @@
 		22A85189153E8F3E000B4042 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09DBC497183F013A0076EC06 /* CoreText.framework */,
+				09DBC498183F013A0076EC06 /* QuartzCore.framework */,
+				09DBC499183F013A0076EC06 /* Security.framework */,
+				09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */,
+				22A851A1153E8F4F000B4042 /* CoreBluetooth.framework */,
 				22A8518A153E8F3E000B4042 /* UIKit.framework */,
 				22A8518C153E8F3E000B4042 /* Foundation.framework */,
 				22A8518E153E8F3E000B4042 /* CoreGraphics.framework */,
@@ -83,9 +176,9 @@
 			children = (
 				22A85199153E8F3E000B4042 /* AppDelegate.h */,
 				22A8519A153E8F3E000B4042 /* AppDelegate.m */,
+				09722953183EFBD5003C4421 /* Controllers */,
+				09722957183EFED8003C4421 /* Categories */,
 				22A85191153E8F3E000B4042 /* Supporting Files */,
-				22A851AB153E964A000B4042 /* HeartRateViewController.h */,
-				22A851AC153E964A000B4042 /* HeartRateViewController.m */,
 			);
 			path = HRM;
 			sourceTree = "<group>";
@@ -94,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				22A85192153E8F3E000B4042 /* Info.plist */,
-				22A85193153E8F3E000B4042 /* InfoPlist.strings */,
 				22A85196153E8F3E000B4042 /* main.m */,
 				22A85198153E8F3E000B4042 /* Prefix.pch */,
 			);
@@ -127,11 +219,12 @@
 		22A8517D153E8F3E000B4042 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = "Radtastical Inc.";
+				ORGANIZATIONNAME = "Dev Marvel LLC";
 				TargetAttributes = {
 					22A85185153E8F3E000B4042 = {
-						DevelopmentTeam = V7362XP9Q7;
+						DevelopmentTeam = B3E3ER9UGK;
 					};
 				};
 			};
@@ -157,8 +250,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22A85195153E8F3E000B4042 /* InfoPlist.strings in Resources */,
+				09DBC493183F00D10076EC06 /* HockeySDK.xcconfig in Resources */,
 				1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */,
+				09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,23 +263,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0948EC37183F06D1000D233A /* UIColor+HeartRate.m in Sources */,
+				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
+				0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
-				22A851AE153E964B000B4042 /* HeartRateViewController.m in Sources */,
+				0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */,
+				09DBC4A7183F02CC0076EC06 /* UIImage+Factory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		22A85193153E8F3E000B4042 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		22A8519C153E8F3E000B4042 /* Debug */ = {
@@ -241,11 +329,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jonathangrana/Development/heartrate/HockeySDK-iOS-3.5.0/HockeySDK.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HRM/Prefix.pch;
 				INFOPLIST_FILE = HRM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = heartrate;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -256,11 +351,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jonathangrana/Development/heartrate/HockeySDK-iOS-3.5.0/HockeySDK.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HRM/Prefix.pch;
 				INFOPLIST_FILE = HRM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = heartrate;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

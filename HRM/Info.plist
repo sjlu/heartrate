@@ -13,7 +13,7 @@
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>com.burst.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.devmarvel.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -35,6 +35,9 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

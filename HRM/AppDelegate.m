@@ -1,25 +1,38 @@
-//
-//  AppDelegate.m
-//  HRM
-//
-//  Created by Tim Burks on 4/17/12.
-//  Copyright (c) 2012 Radtastical Inc. All rights reserved.
-//
-
 #import "AppDelegate.h"
+
+#import <HockeySDK/HockeySDK.h>
+
 #import "HeartRateViewController.h"
+#import "UINavigationController+Factory.h"
+
+@interface AppDelegate()
+<
+BITHockeyManagerDelegate
+>
+
+@end
 
 @implementation AppDelegate
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"Launching");
+    [self setup];
+    return YES;
+}
+
+- (void)setup {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
+    
+    UINavigationController *nav = [UINavigationController navigationController];
+    [nav setViewControllers:@[[[HeartRateViewController alloc] init]]];
+    self.window.rootViewController = nav;
+}
 
-    self.window.rootViewController = [[HeartRateViewController alloc] init];
-    return YES;
+- (void)registerHockey {
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"bcc85d573795f590465753c0b46b3210"
+                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
 }
 
 @end
