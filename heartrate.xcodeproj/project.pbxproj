@@ -10,6 +10,8 @@
 		0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC30183F05C7000D233A /* UINavigationController+Factory.m */; };
 		0948EC37183F06D1000D233A /* UIColor+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC36183F06D1000D233A /* UIColor+HeartRate.m */; };
 		0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC39183F08C1000D233A /* UIView+Utility.m */; };
+		0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC3F183F15C4000D233A /* UserInformationViewController.m */; };
+		0948EC43183F1617000D233A /* UILabel+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC42183F1617000D233A /* UILabel+HeartRate.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
 		09DBC493183F00D10076EC06 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48C183F00D10076EC06 /* HockeySDK.xcconfig */; };
@@ -35,6 +37,10 @@
 		0948EC36183F06D1000D233A /* UIColor+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HeartRate.m"; path = "Categories/UIColor+HeartRate.m"; sourceTree = "<group>"; };
 		0948EC38183F08C1000D233A /* UIView+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Utility.h"; path = "Categories/UIView+Utility.h"; sourceTree = "<group>"; };
 		0948EC39183F08C1000D233A /* UIView+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Utility.m"; path = "Categories/UIView+Utility.m"; sourceTree = "<group>"; };
+		0948EC3E183F15C4000D233A /* UserInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInformationViewController.h; path = Controllers/UserInformationViewController.h; sourceTree = "<group>"; };
+		0948EC3F183F15C4000D233A /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInformationViewController.m; path = Controllers/UserInformationViewController.m; sourceTree = "<group>"; };
+		0948EC41183F1617000D233A /* UILabel+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+HeartRate.h"; path = "Categories/UILabel+HeartRate.h"; sourceTree = "<group>"; };
+		0948EC42183F1617000D233A /* UILabel+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+HeartRate.m"; path = "Categories/UILabel+HeartRate.m"; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
 		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 			children = (
 				09722954183EFBFC003C4421 /* HeartRateViewController.h */,
 				09722955183EFBFC003C4421 /* HeartRateViewController.m */,
+				0948EC3E183F15C4000D233A /* UserInformationViewController.h */,
+				0948EC3F183F15C4000D233A /* UserInformationViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -99,6 +107,8 @@
 				0948EC30183F05C7000D233A /* UINavigationController+Factory.m */,
 				0948EC38183F08C1000D233A /* UIView+Utility.h */,
 				0948EC39183F08C1000D233A /* UIView+Utility.m */,
+				0948EC41183F1617000D233A /* UILabel+HeartRate.h */,
+				0948EC42183F1617000D233A /* UILabel+HeartRate.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -265,10 +275,12 @@
 			files = (
 				0948EC37183F06D1000D233A /* UIColor+HeartRate.m in Sources */,
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
+				0948EC43183F1617000D233A /* UILabel+HeartRate.m in Sources */,
 				0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
 				0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */,
+				0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */,
 				09DBC4A7183F02CC0076EC06 /* UIImage+Factory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

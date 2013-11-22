@@ -9,6 +9,7 @@
                             forBarMetrics:UIBarMetricsDefault];
     nav.navigationBar.shadowImage = [UIImage new];
     nav.navigationBar.translucent = YES;
+    nav.navigationBar.tintColor = [UIColor redColor];
     nav.view.backgroundColor = [UIColor clearColor];
     
     return nav;

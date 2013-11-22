@@ -2,6 +2,11 @@
 
 #import <CoreBluetooth/CoreBluetooth.h>
 
+#import "UserInformationViewController.h"
+
+#import "UILabel+HeartRate.h"
+#import "UIImage+Factory.h"
+
 @interface HeartRateViewController ()
 <
 CBCentralManagerDelegate,
@@ -26,34 +31,25 @@ CBPeripheralDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage named:@"settings"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(showSettings)];
     
-    //TODO: Move Fonts to category class
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    
     //TODO: Change all strings to NSLocalizedString Macro
     self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
-    self.statusLabel.font = [UIFont fontWithName:@"Avenir" size:32];
-    self.statusLabel.text = @"Searching...";
-    self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    self.statusLabel.textAlignment = NSTextAlignmentCenter;
-    self.statusLabel.backgroundColor = [UIColor clearColor];
-    self.statusLabel.textColor = [UIColor blackColor];
+    [self.statusLabel applyDefaultStyleWithSize:32.f];
     [self.view addSubview:self.statusLabel];
     
     self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
-    self.heartRateLabel.font = [UIFont fontWithName:@"Avenir" size:144];
-    self.heartRateLabel.text = @"";
-    self.heartRateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    self.heartRateLabel.textAlignment = NSTextAlignmentCenter;
-    self.heartRateLabel.backgroundColor = [UIColor clearColor];
-    self.heartRateLabel.textColor = [UIColor blackColor];
+    [self.heartRateLabel applyDefaultStyleWithSize:144.f];
     [self.view addSubview:self.heartRateLabel];
     
-    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 305, 320, 30)];
-    self.zoneLabel.font = [UIFont fontWithName:@"Avenir" size:24];
-    self.zoneLabel.textAlignment = NSTextAlignmentCenter;
-    self.zoneLabel.backgroundColor = [UIColor clearColor];
-    self.zoneLabel.textColor = [UIColor blackColor];
-    self.zoneLabel.text = @"";
+    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 305, 320, 40)];
+    [self.zoneLabel applyDefaultStyleWithSize:34.f];
     [self.view addSubview:self.zoneLabel];
     
     self.heartRateMonitors = [NSMutableArray array];
@@ -63,6 +59,10 @@ CBPeripheralDelegate
 }
 
 #pragma mark - Selector Methods
+
+- (void)showSettings {
+    [self.navigationController pushViewController:[[UserInformationViewController alloc] init] animated:YES];
+}
 
 // Update UI with heart rate data received from device
 - (void)updateWithHRMData:(NSData *)data
@@ -261,6 +261,8 @@ CBPeripheralDelegate
         self.peripheral = nil;
     }
 }
+
+//TODO: Move all identifiers to constants
 
 #pragma mark - CBPeripheral delegate methods
 
