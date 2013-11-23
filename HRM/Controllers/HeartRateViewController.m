@@ -42,10 +42,12 @@ CBPeripheralDelegate
     //TODO: Change all strings to NSLocalizedString Macro
     self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
     [self.statusLabel applyDefaultStyleWithSize:32.f];
+    self.statusLabel.text = @"Searching...";
     [self.view addSubview:self.statusLabel];
     
     self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
     [self.heartRateLabel applyDefaultStyleWithSize:144.f];
+    self.heartRateLabel.text = @"...";
     [self.view addSubview:self.heartRateLabel];
     
     self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 305, 320, 40)];
@@ -195,23 +197,23 @@ CBPeripheralDelegate
 #pragma mark - CBCentralManager delegate methods
 
 // Invoked when the central manager's state is updated.
-- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+- (void) centralManagerDidUpdateState:(CBCentralManager *)central
 {
     [self isLECapableHardware];
 }
 
 // Invoked when the central discovers heart rate peripheral while scanning.
-- (void)centralManager:(CBCentralManager *)central
- didDiscoverPeripheral:(CBPeripheral *)aPeripheral
-     advertisementData:(NSDictionary *)advertisementData
-                  RSSI:(NSNumber *)RSSI
+- (void) centralManager:(CBCentralManager *)central
+  didDiscoverPeripheral:(CBPeripheral *)aPeripheral
+      advertisementData:(NSDictionary *)advertisementData
+                   RSSI:(NSNumber *)RSSI
 {
     NSMutableArray *peripherals = [self mutableArrayValueForKey:@"heartRateMonitors"];
     if(![self.heartRateMonitors containsObject:aPeripheral])
         [peripherals addObject:aPeripheral];
     
     // Retrieve already known devices
-    [self.manager retrievePeripheralsWithIdentifiers:[NSArray arrayWithObject:aPeripheral.identifier]];
+    [self.manager retrievePeripherals:[NSArray arrayWithObject:(id)aPeripheral.UUID]];
 }
 
 // Invoked when the central manager retrieves the list of known peripherals.
@@ -233,7 +235,7 @@ CBPeripheralDelegate
 
 // Invoked when a connection is succesfully created with the peripheral.
 // Discover available services on the peripheral
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
+- (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
 {
     NSLog(@"connected");
     [aPeripheral setDelegate:self];
@@ -242,8 +244,9 @@ CBPeripheralDelegate
 
 // Invoked when an existing connection with the peripheral is torn down.
 // Reset local variables
-- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral
-                 error:(NSError *)error
+- (void) centralManager:(CBCentralManager *)central
+didDisconnectPeripheral:(CBPeripheral *)aPeripheral
+                  error:(NSError *)error
 {
     if (self.peripheral) {
         [self.peripheral setDelegate:nil];
@@ -252,8 +255,9 @@ CBPeripheralDelegate
 }
 
 // Invoked when the central manager fails to create a connection with the peripheral.
-- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
-                 error:(NSError *)error
+- (void) centralManager:(CBCentralManager *)central
+didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
+                  error:(NSError *)error
 {
     NSLog(@"Fail to connect to peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
     if (self.peripheral) {
@@ -262,13 +266,11 @@ CBPeripheralDelegate
     }
 }
 
-//TODO: Move all identifiers to constants
-
 #pragma mark - CBPeripheral delegate methods
 
 // Invoked upon completion of a -[discoverServices:] request.
 // Discover available characteristics on interested services
-- (void)peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
+- (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
 {
     for (CBService *aService in aPeripheral.services) {
         NSLog(@"Service found with UUID: %@", aService.UUID);
@@ -283,7 +285,6 @@ CBPeripheralDelegate
             [aPeripheral discoverCharacteristics:nil forService:aService];
         }
         
-        //Not 100% sure this is the correct value
         /* GAP (Generic Access Profile) for Device Name */
         if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
             [aPeripheral discoverCharacteristics:nil forService:aService];
@@ -293,9 +294,9 @@ CBPeripheralDelegate
 
 // Invoked upon completion of a -[discoverCharacteristics:forService:] request.
 // Perform appropriate operations on interested characteristics
-- (void)peripheral:(CBPeripheral *)aPeripheral
+- (void) peripheral:(CBPeripheral *)aPeripheral
 didDiscoverCharacteristicsForService:(CBService *)service
-             error:(NSError *)error
+              error:(NSError *)error
 {
     if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
@@ -315,11 +316,8 @@ didDiscoverCharacteristicsForService:(CBService *)service
             // Write heart rate control point
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A39"]]) {
                 uint8_t val = 1;
-                NSData* valData = [NSData dataWithBytes:(void*)&val
-                                                 length:sizeof(val)];
-                [aPeripheral writeValue:valData
-                      forCharacteristic:aChar
-                                   type:CBCharacteristicWriteWithResponse];
+                NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+                [aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
             }
         }
     }
@@ -327,7 +325,6 @@ didDiscoverCharacteristicsForService:(CBService *)service
     if ([service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             // Read device name
-            //Not 100% sure
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]) {
                 [aPeripheral readValueForCharacteristic:aChar];
                 NSLog(@"Found a Device Name Characteristic");
@@ -348,9 +345,9 @@ didDiscoverCharacteristicsForService:(CBService *)service
 
 // Invoked upon completion of a -[readValueForCharacteristic:] request
 // or on the reception of a notification/indication.
-- (void)peripheral:(CBPeripheral *)aPeripheral
+- (void) peripheral:(CBPeripheral *)aPeripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
-             error:(NSError *)error
+              error:(NSError *)error
 {
     // Updated value for heart rate measurement received
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]) {
