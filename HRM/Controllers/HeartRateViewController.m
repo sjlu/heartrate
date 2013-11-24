@@ -203,7 +203,7 @@ CBPeripheralDelegate
     static uint8_t bpm;
     
     if (bpm >= 50) {
-        bpm = (bpm + 10) % 180;
+        bpm = (bpm + 10) % 220;
     }
     else {
         bpm = 50;
