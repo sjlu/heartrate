@@ -22,6 +22,8 @@
 
 @implementation HeartBeatVerticalChart
 
+const static CGFloat padding = 16.f;
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kBluetoothNotificationHeartBeat object:nil];
 }
@@ -46,7 +48,7 @@
                           delay:0.f
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
-                         weak_self.imageHeart.center = CGPointMake(0, weak_self.height - ((bpm.floatValue / maxHeartBpm.floatValue) * weak_self.height));
+                         weak_self.imageHeart.center = CGPointMake(padding, weak_self.height - ((bpm.floatValue / maxHeartBpm.floatValue) * weak_self.height));
                      }
                      completion:nil];
     
@@ -57,7 +59,7 @@
         UIImage *image = [UIImage named:@"heart"];
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         _imageHeart = [[UIImageView alloc] initWithImage:image];
-        _imageHeart.center = CGPointMake(0, self.height);
+        _imageHeart.center = CGPointMake(padding, self.height);
         [self addSubview:_imageHeart];
     }
     

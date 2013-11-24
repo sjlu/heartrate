@@ -17,6 +17,7 @@
 @property (nonatomic)   UILabel                     *zoneLabel;
 @property (nonatomic)   UILabel                     *statusLabel;
 @property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
+@property (nonatomic)   CATransition                *textAnimation;
 
 @end
 
@@ -36,6 +37,11 @@
     
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor clearColor];
+    
+    self.textAnimation = [CATransition animation];
+    self.textAnimation.duration = .5;
+    self.textAnimation.type = kCATransitionFade;
+    self.textAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     //TODO: Change all strings to NSLocalizedString Macro
     self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, self.view.width, 150)];
@@ -83,6 +89,9 @@
 
 - (void)updateWithBPM:(NSNotification *)notification {
     NSNumber *beats = notification.object;
+    
+    [self.heartRateLabel.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
+    [self.zoneLabel.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
     self.heartRateLabel.text = [NSString stringWithFormat:@"%@", beats];
     
     NSNumber *maxHeartRate = [NSUserDefaults getMaxHeartRate];
