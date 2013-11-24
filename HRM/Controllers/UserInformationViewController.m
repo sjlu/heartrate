@@ -52,6 +52,9 @@ const static CGFloat padding = 30;
     textFieldAge.keyboardType = UIKeyboardTypeNumberPad;
     textFieldAge.delegate = self;
     [self.view addSubview:textFieldAge];
+    
+    //TODO:Add list of broadcasting devices and show current device
+    //TODO:Allow user to set resting heart rate
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {

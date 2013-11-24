@@ -29,7 +29,9 @@ BITHockeyManagerDelegate
     [nav setViewControllers:@[[[HeartRateViewController alloc] init]]];
     self.window.rootViewController = nav;
     
+#if REGISTER_HOCKEY
     [self registerHockey];
+#endif
     
     //Initialize bluetooth manager
     [BluetoothManager shared];

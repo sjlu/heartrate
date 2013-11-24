@@ -9,20 +9,27 @@
 
 #import "BluetoothManager.h"//Needed for constants
 
+#import "HeartBeatVerticalChart.h"
+
 @interface HeartRateViewController ()
 
-@property (nonatomic)   UILabel             *heartRateLabel;
-@property (nonatomic)   UILabel             *zoneLabel;
-@property (nonatomic)   UILabel             *statusLabel;
+@property (nonatomic)   UILabel                     *heartRateLabel;
+@property (nonatomic)   UILabel                     *zoneLabel;
+@property (nonatomic)   UILabel                     *statusLabel;
+@property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
 
 @end
 
 @implementation HeartRateViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBluetoothNotificationHeartBeat object:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage named:@"settings"]
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage named:@"settings"]
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(showSettings)];
@@ -44,6 +51,9 @@
     self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.heartRateLabel.bottom + 40, self.view.width, 40)];
     [self.zoneLabel applyDefaultStyleWithSize:34.f];
     [self.view addSubview:self.zoneLabel];
+    
+    self.heartVerticalChart = [[HeartBeatVerticalChart alloc] initWithFrame:CGRectMake(self.view.width - 32.f, 0, 32.f, self.view.height)];
+    [self.view addSubview:self.heartVerticalChart];
     
     //Observe heart beat updates
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -85,47 +95,46 @@
         if (bpm > max_bpm) {
             self.zoneLabel.text = @"Max";
             self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
-            self.zoneLabel.textColor = [UIColor whiteColor];
-            self.heartRateLabel.textColor = [UIColor whiteColor];
+            self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-20) {
             self.zoneLabel.text = @"Anaerobic";
             self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
-            self.zoneLabel.textColor = [UIColor whiteColor];
-            self.heartRateLabel.textColor = [UIColor whiteColor];
+            self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-40) {
             self.zoneLabel.text = @"Aerobic";
             self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
-            self.zoneLabel.textColor = [UIColor whiteColor];
-            self.heartRateLabel.textColor = [UIColor whiteColor];
+            self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-60) {
             self.zoneLabel.text = @"Weight Control";
             self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
-            self.zoneLabel.textColor = [UIColor whiteColor];
-            self.heartRateLabel.textColor = [UIColor whiteColor];
+            self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-80) {
             self.zoneLabel.text = @"Moderate";
             self.view.backgroundColor = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
-            self.zoneLabel.textColor = [UIColor whiteColor];
-            self.heartRateLabel.textColor = [UIColor whiteColor];
+            self.tintColor = [UIColor whiteColor];
             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         } else {
             self.zoneLabel.text = @"Resting";
             self.view.backgroundColor = [UIColor whiteColor];
-            self.zoneLabel.textColor = [UIColor blackColor];
-            self.heartRateLabel.textColor = [UIColor blackColor];
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            self.tintColor = [UIColor redColor];
         }
     }
     else {
         self.zoneLabel.text = @"";
         self.view.backgroundColor = [UIColor whiteColor];
-        self.zoneLabel.textColor = [UIColor blackColor];
-        self.heartRateLabel.textColor = [UIColor blackColor];
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        self.tintColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
     }
     
     
     self.statusLabel.text = @"";
+}
+
+- (void)setTintColor:(UIColor *)tintColor {
+    self.navigationController.navigationBar.tintColor = tintColor;
+    self.heartVerticalChart.tintColor = tintColor;
+    self.zoneLabel.textColor= tintColor;
+    self.heartRateLabel.textColor = tintColor;
+    
 }
 
 @end
