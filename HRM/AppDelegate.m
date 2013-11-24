@@ -3,6 +3,7 @@
 #import <HockeySDK/HockeySDK.h>
 
 #import "HeartRateViewController.h"
+#import "BluetoothManager.h"
 #import "UINavigationController+Factory.h"
 
 @interface AppDelegate()
@@ -27,6 +28,11 @@ BITHockeyManagerDelegate
     UINavigationController *nav = [UINavigationController navigationController];
     [nav setViewControllers:@[[[HeartRateViewController alloc] init]]];
     self.window.rootViewController = nav;
+    
+    [self registerHockey];
+    
+    //Initialize bluetooth manager
+    [BluetoothManager shared];
 }
 
 - (void)registerHockey {

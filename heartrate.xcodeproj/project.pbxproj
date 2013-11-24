@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC30183F05C7000D233A /* UINavigationController+Factory.m */; };
-		0948EC37183F06D1000D233A /* UIColor+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC36183F06D1000D233A /* UIColor+HeartRate.m */; };
-		0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC39183F08C1000D233A /* UIView+Utility.m */; };
 		0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC3F183F15C4000D233A /* UserInformationViewController.m */; };
-		0948EC43183F1617000D233A /* UILabel+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC42183F1617000D233A /* UILabel+HeartRate.m */; };
-		09604B8B184186D80045F452 /* UITextField+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604B8A184186D80045F452 /* UITextField+HeartRate.m */; };
-		09604BB818418F160045F452 /* NSUserDefaults+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BB718418F160045F452 /* NSUserDefaults+HeartRate.m */; };
+		09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BD8184274490045F452 /* UIColor+HeartRate.m */; };
+		09604BE4184274490045F452 /* UIImage+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BDA184274490045F452 /* UIImage+Factory.m */; };
+		09604BE5184274490045F452 /* UILabel+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BDC184274490045F452 /* UILabel+HeartRate.m */; };
+		09604BE6184274490045F452 /* UINavigationController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BDE184274490045F452 /* UINavigationController+Factory.m */; };
+		09604BE7184274490045F452 /* UITextField+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BE0184274490045F452 /* UITextField+HeartRate.m */; };
+		09604BE8184274490045F452 /* UIView+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BE2184274490045F452 /* UIView+Utility.m */; };
+		09604BEB184274580045F452 /* NSUserDefaults+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BEA184274580045F452 /* NSUserDefaults+HeartRate.m */; };
+		09604BEE184274A30045F452 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BED184274A30045F452 /* BluetoothManager.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
@@ -21,7 +23,6 @@
 		09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC498183F013A0076EC06 /* QuartzCore.framework */; };
 		09DBC49D183F013A0076EC06 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC499183F013A0076EC06 /* Security.framework */; };
 		09DBC49E183F013A0076EC06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */; };
-		09DBC4A7183F02CC0076EC06 /* UIImage+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DBC4A6183F02CC0076EC06 /* UIImage+Factory.m */; };
 		1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507923D183E6EA0003DF9E3 /* Images.xcassets */; };
 		22A8518B153E8F3E000B4042 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518A153E8F3E000B4042 /* UIKit.framework */; };
 		22A8518D153E8F3E000B4042 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518C153E8F3E000B4042 /* Foundation.framework */; };
@@ -32,21 +33,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0948EC2F183F05C7000D233A /* UINavigationController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Factory.h"; path = "Categories/UINavigationController+Factory.h"; sourceTree = "<group>"; };
-		0948EC30183F05C7000D233A /* UINavigationController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Factory.m"; path = "Categories/UINavigationController+Factory.m"; sourceTree = "<group>"; };
-		0948EC35183F06D1000D233A /* UIColor+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HeartRate.h"; path = "Categories/UIColor+HeartRate.h"; sourceTree = "<group>"; };
-		0948EC36183F06D1000D233A /* UIColor+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HeartRate.m"; path = "Categories/UIColor+HeartRate.m"; sourceTree = "<group>"; };
-		0948EC38183F08C1000D233A /* UIView+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Utility.h"; path = "Categories/UIView+Utility.h"; sourceTree = "<group>"; };
-		0948EC39183F08C1000D233A /* UIView+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Utility.m"; path = "Categories/UIView+Utility.m"; sourceTree = "<group>"; };
 		0948EC3E183F15C4000D233A /* UserInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInformationViewController.h; path = Controllers/UserInformationViewController.h; sourceTree = "<group>"; };
 		0948EC3F183F15C4000D233A /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInformationViewController.m; path = Controllers/UserInformationViewController.m; sourceTree = "<group>"; };
-		0948EC41183F1617000D233A /* UILabel+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+HeartRate.h"; path = "Categories/UILabel+HeartRate.h"; sourceTree = "<group>"; };
-		0948EC42183F1617000D233A /* UILabel+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+HeartRate.m"; path = "Categories/UILabel+HeartRate.m"; sourceTree = "<group>"; };
-		09604B89184186D80045F452 /* UITextField+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+HeartRate.h"; path = "Categories/UITextField+HeartRate.h"; sourceTree = "<group>"; };
-		09604B8A184186D80045F452 /* UITextField+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+HeartRate.m"; path = "Categories/UITextField+HeartRate.m"; sourceTree = "<group>"; };
-		09604BB618418F160045F452 /* NSUserDefaults+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+HeartRate.h"; path = "Categories/NSUserDefaults+HeartRate.h"; sourceTree = "<group>"; };
-		09604BB718418F160045F452 /* NSUserDefaults+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+HeartRate.m"; path = "Categories/NSUserDefaults+HeartRate.m"; sourceTree = "<group>"; };
 		09604BB9184190340045F452 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		09604BD7184274490045F452 /* UIColor+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HeartRate.h"; path = "Views/Categories/UIColor+HeartRate.h"; sourceTree = "<group>"; };
+		09604BD8184274490045F452 /* UIColor+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HeartRate.m"; path = "Views/Categories/UIColor+HeartRate.m"; sourceTree = "<group>"; };
+		09604BD9184274490045F452 /* UIImage+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Factory.h"; path = "Views/Categories/UIImage+Factory.h"; sourceTree = "<group>"; };
+		09604BDA184274490045F452 /* UIImage+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Factory.m"; path = "Views/Categories/UIImage+Factory.m"; sourceTree = "<group>"; };
+		09604BDB184274490045F452 /* UILabel+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+HeartRate.h"; path = "Views/Categories/UILabel+HeartRate.h"; sourceTree = "<group>"; };
+		09604BDC184274490045F452 /* UILabel+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+HeartRate.m"; path = "Views/Categories/UILabel+HeartRate.m"; sourceTree = "<group>"; };
+		09604BDD184274490045F452 /* UINavigationController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Factory.h"; path = "Views/Categories/UINavigationController+Factory.h"; sourceTree = "<group>"; };
+		09604BDE184274490045F452 /* UINavigationController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Factory.m"; path = "Views/Categories/UINavigationController+Factory.m"; sourceTree = "<group>"; };
+		09604BDF184274490045F452 /* UITextField+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+HeartRate.h"; path = "Views/Categories/UITextField+HeartRate.h"; sourceTree = "<group>"; };
+		09604BE0184274490045F452 /* UITextField+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+HeartRate.m"; path = "Views/Categories/UITextField+HeartRate.m"; sourceTree = "<group>"; };
+		09604BE1184274490045F452 /* UIView+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Utility.h"; path = "Views/Categories/UIView+Utility.h"; sourceTree = "<group>"; };
+		09604BE2184274490045F452 /* UIView+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Utility.m"; path = "Views/Categories/UIView+Utility.m"; sourceTree = "<group>"; };
+		09604BE9184274580045F452 /* NSUserDefaults+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+HeartRate.h"; path = "Controllers/Categories/NSUserDefaults+HeartRate.h"; sourceTree = "<group>"; };
+		09604BEA184274580045F452 /* NSUserDefaults+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+HeartRate.m"; path = "Controllers/Categories/NSUserDefaults+HeartRate.m"; sourceTree = "<group>"; };
+		09604BEC184274A30045F452 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothManager.h; path = Controllers/Singletons/BluetoothManager.h; sourceTree = "<group>"; };
+		09604BED184274A30045F452 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothManager.m; path = Controllers/Singletons/BluetoothManager.m; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
 		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -56,8 +61,6 @@
 		09DBC498183F013A0076EC06 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		09DBC499183F013A0076EC06 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		09DBC4A5183F02CC0076EC06 /* UIImage+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Factory.h"; path = "Categories/UIImage+Factory.h"; sourceTree = "<group>"; };
-		09DBC4A6183F02CC0076EC06 /* UIImage+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Factory.m"; path = "Categories/UIImage+Factory.m"; sourceTree = "<group>"; };
 		1507923D183E6EA0003DF9E3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = heartrate/Images.xcassets; sourceTree = "<group>"; };
 		22A85186153E8F3E000B4042 /* heartrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heartrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A8518A153E8F3E000B4042 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -98,9 +101,54 @@
 			name = submodules;
 			sourceTree = "<group>";
 		};
+		09604BD3184271E90045F452 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				09604BEC184274A30045F452 /* BluetoothManager.h */,
+				09604BED184274A30045F452 /* BluetoothManager.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		09604BD41842738A0045F452 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09604BD6184274350045F452 /* Categories */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		09604BD5184273940045F452 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		09604BD6184274350045F452 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				09604BD7184274490045F452 /* UIColor+HeartRate.h */,
+				09604BD8184274490045F452 /* UIColor+HeartRate.m */,
+				09604BD9184274490045F452 /* UIImage+Factory.h */,
+				09604BDA184274490045F452 /* UIImage+Factory.m */,
+				09604BDB184274490045F452 /* UILabel+HeartRate.h */,
+				09604BDC184274490045F452 /* UILabel+HeartRate.m */,
+				09604BDD184274490045F452 /* UINavigationController+Factory.h */,
+				09604BDE184274490045F452 /* UINavigationController+Factory.m */,
+				09604BDF184274490045F452 /* UITextField+HeartRate.h */,
+				09604BE0184274490045F452 /* UITextField+HeartRate.m */,
+				09604BE1184274490045F452 /* UIView+Utility.h */,
+				09604BE2184274490045F452 /* UIView+Utility.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		09722953183EFBD5003C4421 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				09722957183EFED8003C4421 /* Categories */,
+				09604BD3184271E90045F452 /* Singletons */,
 				09722954183EFBFC003C4421 /* HeartRateViewController.h */,
 				09722955183EFBFC003C4421 /* HeartRateViewController.m */,
 				0948EC3E183F15C4000D233A /* UserInformationViewController.h */,
@@ -112,20 +160,8 @@
 		09722957183EFED8003C4421 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				0948EC35183F06D1000D233A /* UIColor+HeartRate.h */,
-				0948EC36183F06D1000D233A /* UIColor+HeartRate.m */,
-				09DBC4A5183F02CC0076EC06 /* UIImage+Factory.h */,
-				09DBC4A6183F02CC0076EC06 /* UIImage+Factory.m */,
-				0948EC2F183F05C7000D233A /* UINavigationController+Factory.h */,
-				0948EC30183F05C7000D233A /* UINavigationController+Factory.m */,
-				0948EC38183F08C1000D233A /* UIView+Utility.h */,
-				0948EC39183F08C1000D233A /* UIView+Utility.m */,
-				0948EC41183F1617000D233A /* UILabel+HeartRate.h */,
-				0948EC42183F1617000D233A /* UILabel+HeartRate.m */,
-				09604B89184186D80045F452 /* UITextField+HeartRate.h */,
-				09604B8A184186D80045F452 /* UITextField+HeartRate.m */,
-				09604BB618418F160045F452 /* NSUserDefaults+HeartRate.h */,
-				09604BB718418F160045F452 /* NSUserDefaults+HeartRate.m */,
+				09604BE9184274580045F452 /* NSUserDefaults+HeartRate.h */,
+				09604BEA184274580045F452 /* NSUserDefaults+HeartRate.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -204,8 +240,9 @@
 			children = (
 				22A85199153E8F3E000B4042 /* AppDelegate.h */,
 				22A8519A153E8F3E000B4042 /* AppDelegate.m */,
+				09604BD5184273940045F452 /* Models */,
+				09604BD41842738A0045F452 /* Views */,
 				09722953183EFBD5003C4421 /* Controllers */,
-				09722957183EFED8003C4421 /* Categories */,
 				22A85191153E8F3E000B4042 /* Supporting Files */,
 			);
 			path = HRM;
@@ -291,17 +328,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0948EC37183F06D1000D233A /* UIColor+HeartRate.m in Sources */,
+				09604BE6184274490045F452 /* UINavigationController+Factory.m in Sources */,
+				09604BE7184274490045F452 /* UITextField+HeartRate.m in Sources */,
+				09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */,
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
-				0948EC43183F1617000D233A /* UILabel+HeartRate.m in Sources */,
-				0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */,
-				09604B8B184186D80045F452 /* UITextField+HeartRate.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
-				0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */,
+				09604BE4184274490045F452 /* UIImage+Factory.m in Sources */,
+				09604BE8184274490045F452 /* UIView+Utility.m in Sources */,
+				09604BE5184274490045F452 /* UILabel+HeartRate.m in Sources */,
+				09604BEB184274580045F452 /* NSUserDefaults+HeartRate.m in Sources */,
+				09604BEE184274A30045F452 /* BluetoothManager.m in Sources */,
 				0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */,
-				09604BB818418F160045F452 /* NSUserDefaults+HeartRate.m in Sources */,
-				09DBC4A7183F02CC0076EC06 /* UIImage+Factory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

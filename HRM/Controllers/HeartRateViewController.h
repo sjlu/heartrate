@@ -1,6 +1,6 @@
 //
-//  Created by Tim Burks on 4/17/12.
-//  Copyright (c) 2012 Radtastical Inc. All rights reserved.
+//  Created by Jonathan Grana on 11/21/13.
+//  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
 //
 
 @interface HeartRateViewController : UIViewController
