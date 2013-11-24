@@ -13,4 +13,4 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#define BLUETOOTH !TARGET_IPHONE_SIMULATOR
+#include "Macros.h"

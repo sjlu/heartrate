@@ -12,9 +12,10 @@
 		0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC39183F08C1000D233A /* UIView+Utility.m */; };
 		0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC3F183F15C4000D233A /* UserInformationViewController.m */; };
 		0948EC43183F1617000D233A /* UILabel+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC42183F1617000D233A /* UILabel+HeartRate.m */; };
+		09604B8B184186D80045F452 /* UITextField+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604B8A184186D80045F452 /* UITextField+HeartRate.m */; };
+		09604BB818418F160045F452 /* NSUserDefaults+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BB718418F160045F452 /* NSUserDefaults+HeartRate.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
-		09DBC493183F00D10076EC06 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48C183F00D10076EC06 /* HockeySDK.xcconfig */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
 		09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC497183F013A0076EC06 /* CoreText.framework */; };
 		09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC498183F013A0076EC06 /* QuartzCore.framework */; };
@@ -41,6 +42,11 @@
 		0948EC3F183F15C4000D233A /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInformationViewController.m; path = Controllers/UserInformationViewController.m; sourceTree = "<group>"; };
 		0948EC41183F1617000D233A /* UILabel+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+HeartRate.h"; path = "Categories/UILabel+HeartRate.h"; sourceTree = "<group>"; };
 		0948EC42183F1617000D233A /* UILabel+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+HeartRate.m"; path = "Categories/UILabel+HeartRate.m"; sourceTree = "<group>"; };
+		09604B89184186D80045F452 /* UITextField+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+HeartRate.h"; path = "Categories/UITextField+HeartRate.h"; sourceTree = "<group>"; };
+		09604B8A184186D80045F452 /* UITextField+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+HeartRate.m"; path = "Categories/UITextField+HeartRate.m"; sourceTree = "<group>"; };
+		09604BB618418F160045F452 /* NSUserDefaults+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+HeartRate.h"; path = "Categories/NSUserDefaults+HeartRate.h"; sourceTree = "<group>"; };
+		09604BB718418F160045F452 /* NSUserDefaults+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+HeartRate.m"; path = "Categories/NSUserDefaults+HeartRate.m"; sourceTree = "<group>"; };
+		09604BB9184190340045F452 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
 		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -85,6 +91,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09604B8C18418B6D0045F452 /* submodules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = submodules;
+			sourceTree = "<group>";
+		};
 		09722953183EFBD5003C4421 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,10 @@
 				0948EC39183F08C1000D233A /* UIView+Utility.m */,
 				0948EC41183F1617000D233A /* UILabel+HeartRate.h */,
 				0948EC42183F1617000D233A /* UILabel+HeartRate.m */,
+				09604B89184186D80045F452 /* UITextField+HeartRate.h */,
+				09604B8A184186D80045F452 /* UITextField+HeartRate.m */,
+				09604BB618418F160045F452 /* NSUserDefaults+HeartRate.h */,
+				09604BB718418F160045F452 /* NSUserDefaults+HeartRate.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -151,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				1507923D183E6EA0003DF9E3 /* Images.xcassets */,
+				09604B8C18418B6D0045F452 /* submodules */,
 				09DBC485183F009F0076EC06 /* ThirdParty */,
 				22A85190153E8F3E000B4042 /* HRM */,
 				22A85189153E8F3E000B4042 /* Frameworks */,
@@ -199,6 +217,7 @@
 				22A85192153E8F3E000B4042 /* Info.plist */,
 				22A85196153E8F3E000B4042 /* main.m */,
 				22A85198153E8F3E000B4042 /* Prefix.pch */,
+				09604BB9184190340045F452 /* Macros.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -230,7 +249,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = "";
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Dev Marvel LLC";
 				TargetAttributes = {
 					22A85185153E8F3E000B4042 = {
@@ -260,7 +279,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09DBC493183F00D10076EC06 /* HockeySDK.xcconfig in Resources */,
 				1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */,
 				09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */,
 			);
@@ -277,10 +295,12 @@
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
 				0948EC43183F1617000D233A /* UILabel+HeartRate.m in Sources */,
 				0948EC31183F05C7000D233A /* UINavigationController+Factory.m in Sources */,
+				09604B8B184186D80045F452 /* UITextField+HeartRate.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
 				0948EC3A183F08C1000D233A /* UIView+Utility.m in Sources */,
 				0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */,
+				09604BB818418F160045F452 /* NSUserDefaults+HeartRate.m in Sources */,
 				09DBC4A7183F02CC0076EC06 /* UIImage+Factory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,8 +312,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -305,10 +330,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -318,14 +347,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

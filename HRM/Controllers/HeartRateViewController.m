@@ -6,6 +6,8 @@
 
 #import "UILabel+HeartRate.h"
 #import "UIImage+Factory.h"
+#import "UIView+Utility.h"
+#import "NSUserDefaults+HeartRate.h"
 
 @interface HeartRateViewController ()
 <
@@ -40,17 +42,17 @@ CBPeripheralDelegate
     self.view.backgroundColor = [UIColor clearColor];
     
     //TODO: Change all strings to NSLocalizedString Macro
-    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
+    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, self.view.width, 150)];
     [self.statusLabel applyDefaultStyleWithSize:32.f];
     self.statusLabel.text = @"Searching...";
     [self.view addSubview:self.statusLabel];
     
-    self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 150)];
+    self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, self.view.width, 150)];
     [self.heartRateLabel applyDefaultStyleWithSize:144.f];
     self.heartRateLabel.text = @"...";
     [self.view addSubview:self.heartRateLabel];
     
-    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 305, 320, 40)];
+    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.heartRateLabel.bottom + 40, self.view.width, 40)];
     [self.zoneLabel applyDefaultStyleWithSize:34.f];
     [self.view addSubview:self.zoneLabel];
     
@@ -87,42 +89,53 @@ CBPeripheralDelegate
     NSLog(@"bpm %d", bpm);
     self.heartRateLabel.text = [NSString stringWithFormat:@"%d", bpm];
     
-    const uint16_t max_bpm = 180;
+    NSNumber *maxHeartRate = [NSUserDefaults getMaxHeartRate];
     
-    //TODO: Move colors to category class
-    if (bpm > max_bpm) {
-        self.zoneLabel.text = @"Max";
-        self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
-        self.zoneLabel.textColor = [UIColor whiteColor];
-        self.heartRateLabel.textColor = [UIColor whiteColor];
-    } else if (bpm > max_bpm-20) {
-        self.zoneLabel.text = @"Anaerobic";
-        self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
-        self.zoneLabel.textColor = [UIColor whiteColor];
-        self.heartRateLabel.textColor = [UIColor whiteColor];
-    } else if (bpm > max_bpm-40) {
-        self.zoneLabel.text = @"Aerobic";
-        self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
-        self.zoneLabel.textColor = [UIColor whiteColor];
-        self.heartRateLabel.textColor = [UIColor whiteColor];
-    } else if (bpm > max_bpm-60) {
-        self.zoneLabel.text = @"Weight Control";
-        self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
-        self.zoneLabel.textColor = [UIColor whiteColor];
-        self.heartRateLabel.textColor = [UIColor whiteColor];
-    } else if (bpm > max_bpm-80) {
-        self.zoneLabel.text = @"Moderate";
-        self.view.backgroundColor = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
-        self.zoneLabel.textColor = [UIColor whiteColor];
-        self.heartRateLabel.textColor = [UIColor whiteColor];
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    } else {
-        self.zoneLabel.text = @"Resting";
-        self.view.backgroundColor = [UIColor whiteColor];
-        self.zoneLabel.textColor = [UIColor blackColor];
-        self.heartRateLabel.textColor = [UIColor blackColor];
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    if (maxHeartRate.unsignedShortValue < 220) {
+        const uint16_t max_bpm = maxHeartRate.unsignedShortValue;
+        
+        //TODO: Move colors to category class
+        if (bpm > max_bpm) {
+            self.zoneLabel.text = @"Max";
+            self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
+            self.zoneLabel.textColor = [UIColor whiteColor];
+            self.heartRateLabel.textColor = [UIColor whiteColor];
+        } else if (bpm > max_bpm-20) {
+            self.zoneLabel.text = @"Anaerobic";
+            self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
+            self.zoneLabel.textColor = [UIColor whiteColor];
+            self.heartRateLabel.textColor = [UIColor whiteColor];
+        } else if (bpm > max_bpm-40) {
+            self.zoneLabel.text = @"Aerobic";
+            self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
+            self.zoneLabel.textColor = [UIColor whiteColor];
+            self.heartRateLabel.textColor = [UIColor whiteColor];
+        } else if (bpm > max_bpm-60) {
+            self.zoneLabel.text = @"Weight Control";
+            self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
+            self.zoneLabel.textColor = [UIColor whiteColor];
+            self.heartRateLabel.textColor = [UIColor whiteColor];
+        } else if (bpm > max_bpm-80) {
+            self.zoneLabel.text = @"Moderate";
+            self.view.backgroundColor = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
+            self.zoneLabel.textColor = [UIColor whiteColor];
+            self.heartRateLabel.textColor = [UIColor whiteColor];
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        } else {
+            self.zoneLabel.text = @"Resting";
+            self.view.backgroundColor = [UIColor whiteColor];
+            self.zoneLabel.textColor = [UIColor blackColor];
+            self.heartRateLabel.textColor = [UIColor blackColor];
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        }
     }
+    else {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self showSettings];
+        });
+    }
+    
     
     self.statusLabel.text = @"";
 }
