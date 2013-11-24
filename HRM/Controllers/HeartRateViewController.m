@@ -30,9 +30,9 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage named:@"settings"]
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(showSettings)];
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(showSettings)];
     
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor clearColor];
@@ -91,33 +91,45 @@
         const uint16_t max_bpm = maxHeartRate.unsignedShortValue;
         const uint16_t bpm = beats.unsignedShortValue;
         
+        UIColor *background = [UIColor whiteColor];
         //TODO: Move colors to category class
         if (bpm > max_bpm) {
             self.zoneLabel.text = @"Max";
-            self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
+            background = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
             self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-20) {
             self.zoneLabel.text = @"Anaerobic";
-            self.view.backgroundColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
+            background = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
             self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-40) {
             self.zoneLabel.text = @"Aerobic";
-            self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
+            background = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
             self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-60) {
             self.zoneLabel.text = @"Weight Control";
-            self.view.backgroundColor = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
+            background = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
             self.tintColor = [UIColor whiteColor];
         } else if (bpm > max_bpm-80) {
             self.zoneLabel.text = @"Moderate";
-            self.view.backgroundColor = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
+            background = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
             self.tintColor = [UIColor whiteColor];
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         } else {
             self.zoneLabel.text = @"Resting";
-            self.view.backgroundColor = [UIColor whiteColor];
-            self.tintColor = [UIColor redColor];
+            background = [UIColor whiteColor];
+            self.tintColor = [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
         }
+        
+        WEAK(self);
+        [UIView animateWithDuration:1.f
+                         animations:^{
+                             weak_self.view.backgroundColor = background;
+                             if (background == [UIColor whiteColor]) {
+                                 [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+                             }
+                             else {
+                                 [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+                             }
+                         }];
     }
     else {
         self.zoneLabel.text = @"";
@@ -130,10 +142,15 @@
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
-    self.navigationController.navigationBar.tintColor = tintColor;
-    self.heartVerticalChart.tintColor = tintColor;
-    self.zoneLabel.textColor= tintColor;
-    self.heartRateLabel.textColor = tintColor;
+    WEAK(self);
+    [UIView animateWithDuration:1.f
+                     animations:^{
+                         weak_self.navigationController.navigationBar.tintColor = tintColor;
+                         weak_self.heartVerticalChart.tintColor = tintColor;
+                         weak_self.zoneLabel.textColor= tintColor;
+                         weak_self.heartRateLabel.textColor = tintColor;
+                     }];
+    
     
 }
 
