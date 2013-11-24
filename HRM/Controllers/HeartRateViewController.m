@@ -130,6 +130,12 @@ CBPeripheralDelegate
         }
     }
     else {
+        self.zoneLabel.text = @"";
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.zoneLabel.textColor = [UIColor blackColor];
+        self.heartRateLabel.textColor = [UIColor blackColor];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             [self showSettings];
