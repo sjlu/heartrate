@@ -12,6 +12,7 @@
 #import "UILabel+HeartRate.h"
 #import "UITextField+HeartRate.h"
 #import "NSUserDefaults+HeartRate.h"
+#import "UIColor+HeartRate.h"
 
 @interface UserInformationViewController ()
 <
@@ -24,16 +25,32 @@ UITextFieldDelegate
 
 const static CGFloat padding = 30;
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [self init];
+    
+    if (self) {
+        self.view.frame = frame;
+        self.view.backgroundColor = [UIColor clearColor];
+        self.title = NSLocalizedString(@"Target Heart Zone", nil);
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
-    UILabel *labelAgeTitle = [[UILabel alloc] initWithFrame:CGRectMake(padding,
-                                                                       padding + self.navigationController.navigationBar.height,
-                                                                       self.view.width - padding * 2,
-                                                                       padding * 2)];
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width - 5.f, 1.f)];
+    divider.backgroundColor = [UIColor heartRateRed];
+    [self.view addSubview:divider];
+    
+    UILabel *labelAgeTitle = [[UILabel alloc] initWithFrame:CGRectMake(padding * 2,
+                                                                       padding * 1.5,
+                                                                       self.view.width / 3,
+                                                                       padding * 1.5)];
     [labelAgeTitle applyDefaultStyleWithSize:32.f];
     
     labelAgeTitle.text = NSLocalizedString(@"Age", nil);
@@ -42,17 +59,18 @@ const static CGFloat padding = 30;
     
     NSNumber *age = [NSUserDefaults getAge];
     
-    UITextField *textFieldAge = [[UITextField alloc] initWithFrame:CGRectMake(padding,
-                                                                  labelAgeTitle.bottom,
-                                                                  self.view.width - padding * 2,
-                                                                  padding * 2)];
-    [textFieldAge applyDefaultStyleWithSize:28.f];
+    UITextField *textFieldAge = [[UITextField alloc] initWithFrame:CGRectMake(labelAgeTitle.right,
+                                                                  labelAgeTitle.top - 32,
+                                                                  self.view.width / 3,
+                                                                  padding * 1.5)];
+    [textFieldAge applyDefaultStyleWithSize:32.f];
     textFieldAge.text = age ? [NSString stringWithFormat:@"%@", age] : @"";
     textFieldAge.placeholder = @"Set Age";
     textFieldAge.keyboardType = UIKeyboardTypeNumberPad;
     textFieldAge.delegate = self;
     [self.view addSubview:textFieldAge];
     
+    //Separate Controllers
     //TODO:Add list of broadcasting devices and show current device
     //TODO:Allow user to set resting heart rate
 }

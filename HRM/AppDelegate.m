@@ -5,6 +5,7 @@
 #import "HeartRateViewController.h"
 #import "BluetoothManager.h"
 #import "UINavigationController+Factory.h"
+#import "UIColor+HeartRate.h"
 
 @interface AppDelegate()
 <

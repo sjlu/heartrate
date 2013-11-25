@@ -17,6 +17,12 @@
 		09604BEE184274A30045F452 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BED184274A30045F452 /* BluetoothManager.m */; };
 		09604BF1184287BD0045F452 /* HeartBeatVerticalChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BF0184287BD0045F452 /* HeartBeatVerticalChart.m */; };
 		09604BF41842889E0045F452 /* UINavigationController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BF31842889E0045F452 /* UINavigationController+Factory.m */; };
+		09604BF91842BA330045F452 /* localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09604BF81842BA330045F452 /* localization.strings */; };
+		09604BFC1842BD660045F452 /* NSArray+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BFB1842BD660045F452 /* NSArray+HeartRate.m */; };
+		09604BFF1842BD9B0045F452 /* HeartRateZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BFE1842BD9B0045F452 /* HeartRateZone.m */; };
+		09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C041842DDDF0045F452 /* UIViewController+HeartRate.m */; };
+		09604C081842DF460045F452 /* HeartRateContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C071842DF460045F452 /* HeartRateContainer.m */; };
+		09670CAE1843000200A25428 /* HRMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CAD1843000200A25428 /* HRMViewController.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
@@ -55,6 +61,17 @@
 		09604BF0184287BD0045F452 /* HeartBeatVerticalChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartBeatVerticalChart.m; path = Views/HeartBeatVerticalChart.m; sourceTree = "<group>"; };
 		09604BF21842889E0045F452 /* UINavigationController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Factory.h"; path = "Controllers/Categories/UINavigationController+Factory.h"; sourceTree = "<group>"; };
 		09604BF31842889E0045F452 /* UINavigationController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Factory.m"; path = "Controllers/Categories/UINavigationController+Factory.m"; sourceTree = "<group>"; };
+		09604BF81842BA330045F452 /* localization.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = localization.strings; sourceTree = "<group>"; };
+		09604BFA1842BD660045F452 /* NSArray+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+HeartRate.h"; path = "Controllers/Categories/NSArray+HeartRate.h"; sourceTree = "<group>"; };
+		09604BFB1842BD660045F452 /* NSArray+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+HeartRate.m"; path = "Controllers/Categories/NSArray+HeartRate.m"; sourceTree = "<group>"; };
+		09604BFD1842BD9B0045F452 /* HeartRateZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateZone.h; path = Models/HeartRateZone.h; sourceTree = "<group>"; };
+		09604BFE1842BD9B0045F452 /* HeartRateZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateZone.m; path = Models/HeartRateZone.m; sourceTree = "<group>"; };
+		09604C031842DDDF0045F452 /* UIViewController+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+HeartRate.h"; path = "Controllers/Categories/UIViewController+HeartRate.h"; sourceTree = "<group>"; };
+		09604C041842DDDF0045F452 /* UIViewController+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+HeartRate.m"; path = "Controllers/Categories/UIViewController+HeartRate.m"; sourceTree = "<group>"; };
+		09604C061842DF460045F452 /* HeartRateContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateContainer.h; path = Views/HeartRateContainer.h; sourceTree = "<group>"; };
+		09604C071842DF460045F452 /* HeartRateContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateContainer.m; path = Views/HeartRateContainer.m; sourceTree = "<group>"; };
+		09670CAC1843000200A25428 /* HRMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRMViewController.h; path = Controllers/HRMViewController.h; sourceTree = "<group>"; };
+		09670CAD1843000200A25428 /* HRMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRMViewController.m; path = Controllers/HRMViewController.m; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
 		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -119,6 +136,8 @@
 				09604BD6184274350045F452 /* Categories */,
 				09604BEF184287BD0045F452 /* HeartBeatVerticalChart.h */,
 				09604BF0184287BD0045F452 /* HeartBeatVerticalChart.m */,
+				09604C061842DF460045F452 /* HeartRateContainer.h */,
+				09604C071842DF460045F452 /* HeartRateContainer.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -126,6 +145,8 @@
 		09604BD5184273940045F452 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				09604BFD1842BD9B0045F452 /* HeartRateZone.h */,
+				09604BFE1842BD9B0045F452 /* HeartRateZone.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -156,6 +177,8 @@
 				09722955183EFBFC003C4421 /* HeartRateViewController.m */,
 				0948EC3E183F15C4000D233A /* UserInformationViewController.h */,
 				0948EC3F183F15C4000D233A /* UserInformationViewController.m */,
+				09670CAC1843000200A25428 /* HRMViewController.h */,
+				09670CAD1843000200A25428 /* HRMViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +190,10 @@
 				09604BF31842889E0045F452 /* UINavigationController+Factory.m */,
 				09604BE9184274580045F452 /* NSUserDefaults+HeartRate.h */,
 				09604BEA184274580045F452 /* NSUserDefaults+HeartRate.m */,
+				09604BFA1842BD660045F452 /* NSArray+HeartRate.h */,
+				09604BFB1842BD660045F452 /* NSArray+HeartRate.m */,
+				09604C031842DDDF0045F452 /* UIViewController+HeartRate.h */,
+				09604C041842DDDF0045F452 /* UIViewController+HeartRate.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -260,6 +287,7 @@
 				22A85196153E8F3E000B4042 /* main.m */,
 				22A85198153E8F3E000B4042 /* Prefix.pch */,
 				09604BB9184190340045F452 /* Macros.h */,
+				09604BF81842BA330045F452 /* localization.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -322,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */,
+				09604BF91842BA330045F452 /* localization.strings in Resources */,
 				09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,12 +362,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09604BFC1842BD660045F452 /* NSArray+HeartRate.m in Sources */,
 				09604BE7184274490045F452 /* UITextField+HeartRate.m in Sources */,
+				09670CAE1843000200A25428 /* HRMViewController.m in Sources */,
 				09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */,
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
 				09604BF41842889E0045F452 /* UINavigationController+Factory.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
+				09604C081842DF460045F452 /* HeartRateContainer.m in Sources */,
+				09604BFF1842BD9B0045F452 /* HeartRateZone.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
+				09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */,
 				09604BF1184287BD0045F452 /* HeartBeatVerticalChart.m in Sources */,
 				09604BE4184274490045F452 /* UIImage+Factory.m in Sources */,
 				09604BE8184274490045F452 /* UIView+Utility.m in Sources */,

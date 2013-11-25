@@ -8,10 +8,12 @@
 
 #import "UITextField+HeartRate.h"
 
+#import "UIColor+HeartRate.h"
+
 @implementation UITextField (HeartRate)
 
 - (void)applyDefaultStyleWithSize:(CGFloat)size {
-    self.textColor = [UIColor blackColor];
+    self.textColor = [UIColor heartRateRed];
     self.borderStyle = UITextBorderStyleNone;
     self.font = [UIFont fontWithName:@"Avenir" size:size];
     self.textAlignment = NSTextAlignmentCenter;

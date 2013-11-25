@@ -1,5 +1,5 @@
 //
-//  HeartBeatVerticalChart.h
+//  HeartRateContainer.h
 //  heartrate
 //
 //  Created by Jonathan Grana on 11/24/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "HeartRateContainer.h"
-
-@interface HeartBeatVerticalChart : HeartRateContainer
+@interface HeartRateContainer : UIView
 
 @end

@@ -10,4 +10,6 @@
 
 @interface UIColor (HeartRate)
 
++(UIColor *)heartRateRed;
+
 @end

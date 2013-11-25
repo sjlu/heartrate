@@ -1,5 +1,5 @@
 //
-//  HeartBeatVerticalChart.h
+//  UIViewController+HeartRate.h
 //  heartrate
 //
 //  Created by Jonathan Grana on 11/24/13.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "HeartRateContainer.h"
+@interface UIViewController (HeartRate)
 
-@interface HeartBeatVerticalChart : HeartRateContainer
+- (void)setTintColor:(UIColor *)tintColor;
 
 @end

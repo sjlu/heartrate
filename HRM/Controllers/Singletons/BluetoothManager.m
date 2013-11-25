@@ -141,6 +141,8 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
         [peripherals addObject:aPeripheral];
     
     // Retrieve already known devices
+    
+    //FIXME: Depracted method
     [self.manager retrievePeripherals:[NSArray arrayWithObject:(id)aPeripheral.UUID]];
 }
 

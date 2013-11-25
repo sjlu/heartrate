@@ -10,4 +10,8 @@
 
 @implementation UIColor (HeartRate)
 
++(UIColor *)heartRateRed {
+    return [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
+}
+
 @end

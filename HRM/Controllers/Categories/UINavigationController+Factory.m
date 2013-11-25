@@ -1,5 +1,7 @@
 #import "UINavigationController+Factory.h"
 
+#import "UIColor+HeartRate.h"
+
 @implementation UINavigationController (Factory)
 
 + (instancetype)navigationController {
@@ -9,7 +11,7 @@
                             forBarMetrics:UIBarMetricsDefault];
     nav.navigationBar.shadowImage = [UIImage new];
     nav.navigationBar.translucent = YES;
-    nav.navigationBar.tintColor = [UIColor redColor];
+    nav.navigationBar.tintColor = [UIColor heartRateRed];
     nav.view.backgroundColor = [UIColor clearColor];
     
     return nav;
