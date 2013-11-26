@@ -45,26 +45,31 @@ const static CGFloat padding = 16.f;
         verticalLine.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         [self addSubview:verticalLine];
         
-        NSArray *heartRateZones = [NSArray heartRateZones];
+        [self layoutPercentages];
         
-        for (HeartRateZone *zone in heartRateZones) {
-            if (zone.percentage > 0) {
-                UIView *horizontalDivider = [[UIView alloc] initWithFrame:CGRectMake(verticalLine.left - self.width / 8, [self heightPositionForBPM:zone.minBPM], self.width / 8, 1.f)];
-                horizontalDivider.backgroundColor = [UIColor heartRateRed];
-                [self addSubview:horizontalDivider];
-                UILabel *percentage = [[UILabel alloc]initWithFrame:CGRectMake(horizontalDivider.left - padding * 2, horizontalDivider.top - 8, padding * 2, padding * 2)];
-                [percentage applyDefaultStyleWithSize:10.f];
-                percentage.text = zone.percentageString;
-                [percentage sizeToFit];
-                percentage.textColor = [UIColor heartRateRed];
-                percentage.right = horizontalDivider.left - 2;
-                [self addSubview:percentage];
-            }
-        }
         self.heartbeatSpeed = 1.f;
         [self startHeart];
     }
     return self;
+}
+
+- (void)layoutPercentages {
+    NSArray *heartRateZones = [NSArray heartRateZones];
+    
+    for (HeartRateZone *zone in heartRateZones) {
+        if (zone.percentage > 0) {
+            UIView *horizontalDivider = [[UIView alloc] initWithFrame:CGRectMake(self.width - 5.f - self.width / 8, [self heightPositionForBPM:zone.minBPM], self.width / 8, 1.f)];
+            horizontalDivider.backgroundColor = [UIColor heartRateRed];
+            [self addSubview:horizontalDivider];
+            UILabel *percentage = [[UILabel alloc]initWithFrame:CGRectMake(horizontalDivider.left - padding * 2, horizontalDivider.top - 8, padding * 2, padding * 2)];
+            [percentage applyDefaultStyleWithSize:10.f];
+            percentage.text = zone.percentageString;
+            [percentage sizeToFit];
+            percentage.textColor = [UIColor heartRateRed];
+            percentage.right = horizontalDivider.left - 2;
+            [self addSubview:percentage];
+        }
+    }
 }
 
 - (CGFloat)heightPositionForBPM:(NSNumber *)bpm; {

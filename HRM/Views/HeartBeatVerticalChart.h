@@ -12,4 +12,6 @@
 
 @interface HeartBeatVerticalChart : HeartRateContainer
 
+- (void)layoutPercentages;
+
 @end

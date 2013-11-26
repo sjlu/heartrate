@@ -23,8 +23,8 @@
 		09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C041842DDDF0045F452 /* UIViewController+HeartRate.m */; };
 		09604C081842DF460045F452 /* HeartRateContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C071842DF460045F452 /* HeartRateContainer.m */; };
 		09670CAE1843000200A25428 /* HRMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CAD1843000200A25428 /* HRMViewController.m */; };
+		09670CAF1844461600A25428 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
-		09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
 		09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC497183F013A0076EC06 /* CoreText.framework */; };
 		09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC498183F013A0076EC06 /* QuartzCore.framework */; };
@@ -106,8 +106,8 @@
 				22A851A2153E8F4F000B4042 /* CoreBluetooth.framework in Frameworks */,
 				22A8518B153E8F3E000B4042 /* UIKit.framework in Frameworks */,
 				22A8518D153E8F3E000B4042 /* Foundation.framework in Frameworks */,
-				09DBC492183F00D10076EC06 /* HockeySDK.framework in Frameworks */,
 				22A8518F153E8F3E000B4042 /* CoreGraphics.framework in Frameworks */,
+				09670CAF1844461600A25428 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
