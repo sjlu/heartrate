@@ -17,24 +17,25 @@
 
 #import "HeartRateZone.h"
 
-#import "RESideMenu.h"
-
 @interface HeartRateViewController ()
 
-@property (nonatomic)   HeartRateContainer          *heartRateContainer;
-@property (nonatomic)   UILabel                     *heartRateLabel;
-@property (nonatomic)   UILabel                     *zoneLabel;
-@property (nonatomic)   UILabel                     *statusLabel;
-@property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
 @property (nonatomic)   CATransition                *textAnimation;
+@property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
+@property (nonatomic)   HeartRateContainer          *heartRateContainer;
+@property (nonatomic)   HeartRateZone               *currentZone;
+@property (nonatomic)   UILabel                     *heartRateLabel;
 @property (nonatomic)   UILabel                     *labelTitle;
+@property (nonatomic)   UILabel                     *statusLabel;
+@property (nonatomic)   UILabel                     *zoneLabel;
 
 @end
 
 @implementation HeartRateViewController
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBluetoothNotificationHeartBeat object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kBluetoothNotificationHeartBeat
+                                                  object:nil];
 }
 
 - (void)viewDidLoad {
@@ -103,7 +104,6 @@
 #pragma mark - Selector Methods
 
 - (void)toggleSettings {
-    [self.sideMenuViewController presentMenuViewController];
 }
 
 - (void)updateWithBPM:(NSNotification *)notification {
@@ -114,6 +114,11 @@
     self.heartRateLabel.text = [NSString stringWithFormat:@"%@", beats];
     
     HeartRateZone *currentZone = [[NSArray heartRateZones] currentZoneForBPM:beats];
+    
+    if ([currentZone.name isEqualToString:self.currentZone.name]) {
+        [self sendZoneNotification:currentZone];
+    }
+    self.currentZone = currentZone;
     
     UIColor *background = [UIColor whiteColor];
     
@@ -155,9 +160,7 @@
     WEAK(self);
     [UIView animateWithDuration:1.f
                      animations:^{
-                         weak_self.sideMenuViewController.backgroundImage = [UIImage imageWithColor:background andSize:weak_self.sideMenuViewController.view.frame.size];
-                         weak_self.view.backgroundColor = [UIColor clearColor];
-                         weak_self.navigationController.view.backgroundColor = [UIColor clearColor];
+                         weak_self.view.backgroundColor = background;
                          if (background == [UIColor whiteColor]) {
                              [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
                          }
@@ -167,6 +170,28 @@
                      }];
     
     self.statusLabel.text = @"";
+}
+
+- (void)sendZoneNotification:(HeartRateZone *)zone {
+    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+    if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
+    {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        if (localNotif == nil)
+            return;
+        localNotif.fireDate = [NSDate date];
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        
+        // Notification details
+        localNotif.alertBody = zone.name;
+        // Set the action button
+        localNotif.alertAction = @"View";
+        
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        
+        // Schedule the notification
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
 }
 
 @end

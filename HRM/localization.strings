@@ -1,6 +1,5 @@
 /* New strings */
 "Age" = "Age";
-"Maximum Effort" = "Maximum Effort";
 
 /* New strings */
 "..." = "...";
@@ -11,3 +10,6 @@
 "Resting" = "Resting";
 "Searching..." = "Searching...";
 "Weight Control" = "Weight Control";
+
+/* New strings */
+"Target Heart Zone" = "Target Heart Zone";

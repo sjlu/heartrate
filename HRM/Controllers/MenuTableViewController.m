@@ -10,7 +10,6 @@
 
 #import "UIColor+HeartRate.h"
 #import "UILabel+HeartRate.h"
-#import "RESideMenu.h"
 #import "UserInformationViewController.h"
 
 
@@ -100,11 +99,11 @@ UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case heartRateTag: {
-            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
+//            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
             break;
         }
         case profileTag: {
-            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
+//            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
             break;
         }
         default:
