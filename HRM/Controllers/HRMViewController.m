@@ -26,7 +26,7 @@
 #pragma mark - Keyboard
 
 - (BOOL)shouldObserveKeyboard {
-    return YES;
+    return NO;
 }
 
 - (void)registerForKeyboardNotification {

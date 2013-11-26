@@ -24,6 +24,10 @@
 		09604C081842DF460045F452 /* HeartRateContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C071842DF460045F452 /* HeartRateContainer.m */; };
 		09670CAE1843000200A25428 /* HRMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CAD1843000200A25428 /* HRMViewController.m */; };
 		09670CAF1844461600A25428 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
+		09670CFD1844539700A25428 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CE11844539700A25428 /* RECommonFunctions.m */; };
+		09670CFE1844539700A25428 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CE31844539700A25428 /* RESideMenu.m */; };
+		09670CFF1844539700A25428 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CE51844539700A25428 /* UIViewController+RESideMenu.m */; };
+		09670D1018445B4000A25428 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670D0F18445B4000A25428 /* MenuTableViewController.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
 		09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC497183F013A0076EC06 /* CoreText.framework */; };
@@ -72,6 +76,14 @@
 		09604C071842DF460045F452 /* HeartRateContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateContainer.m; path = Views/HeartRateContainer.m; sourceTree = "<group>"; };
 		09670CAC1843000200A25428 /* HRMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRMViewController.h; path = Controllers/HRMViewController.h; sourceTree = "<group>"; };
 		09670CAD1843000200A25428 /* HRMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRMViewController.m; path = Controllers/HRMViewController.m; sourceTree = "<group>"; };
+		09670CE01844539700A25428 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		09670CE11844539700A25428 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		09670CE21844539700A25428 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		09670CE31844539700A25428 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		09670CE41844539700A25428 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		09670CE51844539700A25428 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		09670D0E18445B4000A25428 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTableViewController.h; path = Controllers/MenuTableViewController.h; sourceTree = "<group>"; };
+		09670D0F18445B4000A25428 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTableViewController.m; path = Controllers/MenuTableViewController.m; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
 		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -117,6 +129,7 @@
 		09604B8C18418B6D0045F452 /* submodules */ = {
 			isa = PBXGroup;
 			children = (
+				09670CB01844539700A25428 /* RESideMenu */,
 			);
 			name = submodules;
 			sourceTree = "<group>";
@@ -168,6 +181,28 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		09670CB01844539700A25428 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				09670CDF1844539700A25428 /* RESideMenu */,
+			);
+			name = RESideMenu;
+			path = submodules/RESideMenu;
+			sourceTree = "<group>";
+		};
+		09670CDF1844539700A25428 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				09670CE01844539700A25428 /* RECommonFunctions.h */,
+				09670CE11844539700A25428 /* RECommonFunctions.m */,
+				09670CE21844539700A25428 /* RESideMenu.h */,
+				09670CE31844539700A25428 /* RESideMenu.m */,
+				09670CE41844539700A25428 /* UIViewController+RESideMenu.h */,
+				09670CE51844539700A25428 /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
 		09722953183EFBD5003C4421 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +214,8 @@
 				0948EC3F183F15C4000D233A /* UserInformationViewController.m */,
 				09670CAC1843000200A25428 /* HRMViewController.h */,
 				09670CAD1843000200A25428 /* HRMViewController.m */,
+				09670D0E18445B4000A25428 /* MenuTableViewController.h */,
+				09670D0F18445B4000A25428 /* MenuTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +370,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 22A8517B153E8F3E000B4042;
 			productRefGroup = 22A85187153E8F3E000B4042 /* Products */;
@@ -363,15 +401,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				09604BFC1842BD660045F452 /* NSArray+HeartRate.m in Sources */,
+				09670CFD1844539700A25428 /* RECommonFunctions.m in Sources */,
 				09604BE7184274490045F452 /* UITextField+HeartRate.m in Sources */,
 				09670CAE1843000200A25428 /* HRMViewController.m in Sources */,
+				09670CFE1844539700A25428 /* RESideMenu.m in Sources */,
 				09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */,
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
 				09604BF41842889E0045F452 /* UINavigationController+Factory.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				09604C081842DF460045F452 /* HeartRateContainer.m in Sources */,
+				09670D1018445B4000A25428 /* MenuTableViewController.m in Sources */,
 				09604BFF1842BD9B0045F452 /* HeartRateZone.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
+				09670CFF1844539700A25428 /* UIViewController+RESideMenu.m in Sources */,
 				09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */,
 				09604BF1184287BD0045F452 /* HeartBeatVerticalChart.m in Sources */,
 				09604BE4184274490045F452 /* UIImage+Factory.m in Sources */,

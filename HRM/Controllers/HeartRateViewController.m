@@ -17,6 +17,8 @@
 
 #import "HeartRateZone.h"
 
+#import "RESideMenu.h"
+
 @interface HeartRateViewController ()
 
 @property (nonatomic)   HeartRateContainer          *heartRateContainer;
@@ -101,39 +103,7 @@
 #pragma mark - Selector Methods
 
 - (void)toggleSettings {
-    WEAK(self);
-    UserInformationViewController *child;
-    if (self.childViewControllers.count > 0) {
-        child = self.childViewControllers[0];
-        NSAssert([child isKindOfClass:[UserInformationViewController class]], @"Expected child to only be SortResultsTableViewController");
-        self.labelTitle.text = weak_self.title;
-        
-        [UIView animateWithDuration:.5 animations:^{
-            weak_self.navigationController.navigationBar.top = 20;
-            child.view.top = weak_self.view.height;
-            weak_self.heartRateContainer.top = 0;
-            
-        } completion:^(BOOL __unused finished) {
-            [child willMoveToParentViewController:nil];
-            [child.view removeFromSuperview];
-            [child removeFromParentViewController];
-        }];
-    }
-    else {
-        child = [[UserInformationViewController alloc] initWithFrame:CGRectMake(0, self.view.height, self.view.width, 160.f)];
-        [self addChildViewController:child];
-        [self.view addSubview:child.view];
-        [child didMoveToParentViewController:self];
-        
-        [UIView animateWithDuration:.5 animations:^{
-            child.view.top = weak_self.view.height - 160.f;
-            weak_self.heartRateContainer.top = -child.view.height;
-            weak_self.navigationController.navigationBar.bottom = child.view.top;
-        } completion:^(BOOL finished) {
-            [weak_self.labelTitle.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
-            weak_self.labelTitle.text = child.title;
-        }];
-    }
+    [self.sideMenuViewController presentMenuViewController];
 }
 
 - (void)updateWithBPM:(NSNotification *)notification {
@@ -185,7 +155,9 @@
     WEAK(self);
     [UIView animateWithDuration:1.f
                      animations:^{
-                         weak_self.view.backgroundColor = background;
+                         weak_self.sideMenuViewController.backgroundImage = [UIImage imageWithColor:background andSize:weak_self.sideMenuViewController.view.frame.size];
+                         weak_self.view.backgroundColor = [UIColor clearColor];
+                         weak_self.navigationController.view.backgroundColor = [UIColor clearColor];
                          if (background == [UIColor whiteColor]) {
                              [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
                          }
