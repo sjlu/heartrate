@@ -10,8 +10,6 @@
 
 #import "HRMViewController.h"
 
-@interface UserInformationViewController : UIViewController
-
-- (instancetype)initWithFrame:(CGRect)frame;
+@interface UserInformationViewController : HRMViewController
 
 @end

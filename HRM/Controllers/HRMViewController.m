@@ -50,8 +50,8 @@
                           delay:0.f
                         options:(UIViewAnimationOptions)[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
                      animations:^ {
-                         weak_self.view.top -= endRect.size.height;
-                         weak_self.navigationController.navigationBar.top -= endRect.size.height;
+                         weak_self.view.height -= endRect.size.height;
+//                         weak_self.navigationController.navigationBar.top = -64.f;
                      }
                      completion:^(BOOL __unused finished) {
                          if (finished) {
@@ -73,8 +73,8 @@
                           delay:0.f
                         options:(UIViewAnimationOptions)[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
                      animations:^ {
-                         weak_self.view.top += endRect.size.height;
-                         weak_self.navigationController.navigationBar.top = weak_self.view.top + 20.f;
+                         weak_self.view.height += endRect.size.height;
+//                         weak_self.navigationController.navigationBar.top = 0;
                      }
                      completion:^(BOOL __unused finished) {
                          [self keyboardDidHide];

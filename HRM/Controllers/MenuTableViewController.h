@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuTableViewController : UIViewController
+#import "HRMViewController.h"
+
+@interface MenuTableViewController : HRMViewController
 
 @end

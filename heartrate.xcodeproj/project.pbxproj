@@ -26,13 +26,19 @@
 		09670CAE1843000200A25428 /* HRMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CAD1843000200A25428 /* HRMViewController.m */; };
 		09670CAF1844461600A25428 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC48A183F00D10076EC06 /* HockeySDK.framework */; };
 		09670D1018445B4000A25428 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670D0F18445B4000A25428 /* MenuTableViewController.m */; };
+		09670E751847B75C00A25428 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670DEE1847B75C00A25428 /* IISideController.m */; };
+		09670E761847B75C00A25428 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670DF01847B75C00A25428 /* IIViewDeckController.m */; };
+		09670E771847B75C00A25428 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670DF21847B75C00A25428 /* IIWrapController.m */; };
+		09670EA11847C57100A25428 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09670EA01847C57100A25428 /* Images.xcassets */; };
+		09670EA51847C6AD00A25428 /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EA41847C6AD00A25428 /* MenuItemCell.m */; };
+		09670EA81847CAF000A25428 /* UIFont+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EA71847CAF000A25428 /* UIFont+HeartRate.m */; };
+		09670EAB1847D23D00A25428 /* UISegmentedControl+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EAA1847D23D00A25428 /* UISegmentedControl+HeartRate.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
 		09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC497183F013A0076EC06 /* CoreText.framework */; };
 		09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC498183F013A0076EC06 /* QuartzCore.framework */; };
 		09DBC49D183F013A0076EC06 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC499183F013A0076EC06 /* Security.framework */; };
 		09DBC49E183F013A0076EC06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */; };
-		1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507923D183E6EA0003DF9E3 /* Images.xcassets */; };
 		22A8518B153E8F3E000B4042 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518A153E8F3E000B4042 /* UIKit.framework */; };
 		22A8518D153E8F3E000B4042 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518C153E8F3E000B4042 /* Foundation.framework */; };
 		22A8518F153E8F3E000B4042 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A8518E153E8F3E000B4042 /* CoreGraphics.framework */; };
@@ -78,6 +84,19 @@
 		09670CAD1843000200A25428 /* HRMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRMViewController.m; path = Controllers/HRMViewController.m; sourceTree = "<group>"; };
 		09670D0E18445B4000A25428 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTableViewController.h; path = Controllers/MenuTableViewController.h; sourceTree = "<group>"; };
 		09670D0F18445B4000A25428 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTableViewController.m; path = Controllers/MenuTableViewController.m; sourceTree = "<group>"; };
+		09670DED1847B75C00A25428 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		09670DEE1847B75C00A25428 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		09670DEF1847B75C00A25428 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		09670DF01847B75C00A25428 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		09670DF11847B75C00A25428 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		09670DF21847B75C00A25428 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		09670EA01847C57100A25428 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = heartrate/Images.xcassets; sourceTree = "<group>"; };
+		09670EA31847C6AD00A25428 /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuItemCell.h; path = Views/Cells/MenuItemCell.h; sourceTree = "<group>"; };
+		09670EA41847C6AD00A25428 /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItemCell.m; path = Views/Cells/MenuItemCell.m; sourceTree = "<group>"; };
+		09670EA61847CAF000A25428 /* UIFont+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+HeartRate.h"; path = "Views/Categories/UIFont+HeartRate.h"; sourceTree = "<group>"; };
+		09670EA71847CAF000A25428 /* UIFont+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+HeartRate.m"; path = "Views/Categories/UIFont+HeartRate.m"; sourceTree = "<group>"; };
+		09670EA91847D23D00A25428 /* UISegmentedControl+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISegmentedControl+HeartRate.h"; path = "Views/Categories/UISegmentedControl+HeartRate.h"; sourceTree = "<group>"; };
+		09670EAA1847D23D00A25428 /* UISegmentedControl+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISegmentedControl+HeartRate.m"; path = "Views/Categories/UISegmentedControl+HeartRate.m"; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
 		09722955183EFBFC003C4421 /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateViewController.m; path = Controllers/HeartRateViewController.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -87,7 +106,6 @@
 		09DBC498183F013A0076EC06 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		09DBC499183F013A0076EC06 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		09DBC49A183F013A0076EC06 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		1507923D183E6EA0003DF9E3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = heartrate/Images.xcassets; sourceTree = "<group>"; };
 		22A85186153E8F3E000B4042 /* heartrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heartrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A8518A153E8F3E000B4042 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22A8518C153E8F3E000B4042 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +141,7 @@
 		09604B8C18418B6D0045F452 /* submodules */ = {
 			isa = PBXGroup;
 			children = (
+				09670D2C1847B75B00A25428 /* ViewDeck */,
 			);
 			name = submodules;
 			sourceTree = "<group>";
@@ -139,6 +158,7 @@
 		09604BD41842738A0045F452 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				09670EA21847C68900A25428 /* Cells */,
 				09604BD6184274350045F452 /* Categories */,
 				09604BEF184287BD0045F452 /* HeartBeatVerticalChart.h */,
 				09604BF0184287BD0045F452 /* HeartBeatVerticalChart.m */,
@@ -172,8 +192,43 @@
 				09604BE0184274490045F452 /* UITextField+HeartRate.m */,
 				09604BE1184274490045F452 /* UIView+Utility.h */,
 				09604BE2184274490045F452 /* UIView+Utility.m */,
+				09670EA61847CAF000A25428 /* UIFont+HeartRate.h */,
+				09670EA71847CAF000A25428 /* UIFont+HeartRate.m */,
+				09670EA91847D23D00A25428 /* UISegmentedControl+HeartRate.h */,
+				09670EAA1847D23D00A25428 /* UISegmentedControl+HeartRate.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		09670D2C1847B75B00A25428 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				09670DEC1847B75C00A25428 /* ViewDeck */,
+			);
+			name = ViewDeck;
+			path = submodules/ViewDeck;
+			sourceTree = "<group>";
+		};
+		09670DEC1847B75C00A25428 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				09670DED1847B75C00A25428 /* IISideController.h */,
+				09670DEE1847B75C00A25428 /* IISideController.m */,
+				09670DEF1847B75C00A25428 /* IIViewDeckController.h */,
+				09670DF01847B75C00A25428 /* IIViewDeckController.m */,
+				09670DF11847B75C00A25428 /* IIWrapController.h */,
+				09670DF21847B75C00A25428 /* IIWrapController.m */,
+			);
+			path = ViewDeck;
+			sourceTree = "<group>";
+		};
+		09670EA21847C68900A25428 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				09670EA31847C6AD00A25428 /* MenuItemCell.h */,
+				09670EA41847C6AD00A25428 /* MenuItemCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		09722953183EFBD5003C4421 /* Controllers */ = {
@@ -245,7 +300,7 @@
 		22A8517B153E8F3E000B4042 = {
 			isa = PBXGroup;
 			children = (
-				1507923D183E6EA0003DF9E3 /* Images.xcassets */,
+				09670EA01847C57100A25428 /* Images.xcassets */,
 				09604B8C18418B6D0045F452 /* submodules */,
 				09DBC485183F009F0076EC06 /* ThirdParty */,
 				22A85190153E8F3E000B4042 /* HRM */,
@@ -360,7 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1507923E183E6EA0003DF9E3 /* Images.xcassets in Resources */,
+				09670EA11847C57100A25428 /* Images.xcassets in Resources */,
 				09604BF91842BA330045F452 /* localization.strings in Resources */,
 				09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */,
 			);
@@ -377,12 +432,16 @@
 				09604BE7184274490045F452 /* UITextField+HeartRate.m in Sources */,
 				09670CAE1843000200A25428 /* HRMViewController.m in Sources */,
 				0924D1AD184551290065D3AB /* HeartRateSession.m in Sources */,
+				09670EA81847CAF000A25428 /* UIFont+HeartRate.m in Sources */,
 				09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */,
+				09670EA51847C6AD00A25428 /* MenuItemCell.m in Sources */,
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
 				09604BF41842889E0045F452 /* UINavigationController+Factory.m in Sources */,
+				09670E761847B75C00A25428 /* IIViewDeckController.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				09604C081842DF460045F452 /* HeartRateContainer.m in Sources */,
 				09670D1018445B4000A25428 /* MenuTableViewController.m in Sources */,
+				09670E771847B75C00A25428 /* IIWrapController.m in Sources */,
 				09604BFF1842BD9B0045F452 /* HeartRateZone.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
 				09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */,
@@ -390,7 +449,9 @@
 				09604BE4184274490045F452 /* UIImage+Factory.m in Sources */,
 				09604BE8184274490045F452 /* UIView+Utility.m in Sources */,
 				09604BE5184274490045F452 /* UILabel+HeartRate.m in Sources */,
+				09670EAB1847D23D00A25428 /* UISegmentedControl+HeartRate.m in Sources */,
 				09604BEB184274580045F452 /* NSUserDefaults+HeartRate.m in Sources */,
+				09670E751847B75C00A25428 /* IISideController.m in Sources */,
 				09604BEE184274A30045F452 /* BluetoothManager.m in Sources */,
 				0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */,
 			);

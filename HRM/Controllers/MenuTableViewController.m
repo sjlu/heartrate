@@ -11,7 +11,11 @@
 #import "UIColor+HeartRate.h"
 #import "UILabel+HeartRate.h"
 #import "UserInformationViewController.h"
-
+#import "IIViewDeckController.h"
+#import "UINavigationController+Factory.h"
+#import "HeartRateViewController.h"
+#import "UIImage+Factory.h"
+#import "MenuItemCell.h"
 
 typedef NS_ENUM(NSInteger, menuTags) {
     heartRateTag,
@@ -27,6 +31,7 @@ UITableViewDelegate
 
 @property (strong, readwrite, nonatomic)    UITableView     *tableView;
 @property (nonatomic)                       NSArray         *items;
+@property (nonatomic)                       NSArray         *images;
 
 @end
 
@@ -36,6 +41,9 @@ UITableViewDelegate
 {
     [super viewDidLoad];
     self.items = @[@"Heart Rate", @"Profile"];
+    self.images = @[@"heart_monitor", @"user"];
+    
+    self.view.backgroundColor = [UIColor heartRateDarkRed];
     
     self.tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 91, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
@@ -55,6 +63,8 @@ UITableViewDelegate
     [self.view addSubview:self.tableView];
     
     [self.tableView reloadData];
+    
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,31 +88,38 @@ UITableViewDelegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[MenuItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
     cell.backgroundColor = [UIColor clearColor];
     [cell.textLabel applyDefaultStyleWithSize:26.f];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
-    cell.textLabel.textColor = [UIColor heartRateRed];
-    cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
-    cell.selectedBackgroundView = [[UIView alloc] init];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.highlightedTextColor = [UIColor heartRateRed];
+    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:[UIColor whiteColor] andSize:cell.frame.size]];
     
     cell.textLabel.text = self.items[indexPath.row];
+    UIImage *image = [[UIImage named:self.images[indexPath.row]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    cell.imageView.image = image;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.viewDeckController toggleLeftViewAnimated:YES];
     switch (indexPath.row) {
         case heartRateTag: {
+            self.viewDeckController.centerController =
+            [UINavigationController navigationControllerWithController:[[HeartRateViewController alloc] init]];
 //            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
             break;
         }
         case profileTag: {
+            self.viewDeckController.centerController =
+            [UINavigationController navigationControllerWithController:[[UserInformationViewController alloc] init]];
 //            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
             break;
         }

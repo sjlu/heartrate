@@ -14,4 +14,8 @@
     return [UIColor colorWithRed:(122/255.f) green:(43/255.f) blue:(53/255.f) alpha:1];
 }
 
++(UIColor *)heartRateDarkRed {
+    return [UIColor colorWithRed:(79/255.f) green:(14/255.f) blue:(22/255.f) alpha:1];
+}
+
 @end

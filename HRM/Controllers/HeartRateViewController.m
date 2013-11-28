@@ -41,19 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage named:@"settings"]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(toggleSettings)];
-    
-    self.navigationController.view.backgroundColor = [UIColor whiteColor];
-    
-    self.labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0, self.navigationController.navigationBar.width, self.navigationController.navigationBar.height)];
-    [self.labelTitle applyDefaultStyleWithSize:24.f];
-    self.labelTitle.textAlignment = NSTextAlignmentLeft;
-    self.navigationItem.titleView = self.labelTitle;
-    
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.tintColor = [UIColor heartRateRed];
     
     self.textAnimation = [CATransition animation];
     self.textAnimation.duration = .5;
@@ -96,15 +85,18 @@
     dispatch_once(&onceToken, ^{
         NSNumber *maxHeartRate = [NSUserDefaults getMaxHeartRate];
         if (maxHeartRate.intValue >= 220) {
-            [weak_self toggleSettings];
+            //Ask user to fill out profile
+            
+            //[weak_self toggleSettings];
         }
     });
 }
 
-#pragma mark - Selector Methods
-
-- (void)toggleSettings {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
+
+#pragma mark - Selector Methods
 
 - (void)updateWithBPM:(NSNotification *)notification {
     NSNumber *beats = notification.object;

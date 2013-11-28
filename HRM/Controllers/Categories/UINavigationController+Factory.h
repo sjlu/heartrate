@@ -12,6 +12,6 @@
  *
  *  @return UINavigationController
  */
-+ (instancetype)navigationController;
++ (instancetype)navigationControllerWithController:(UIViewController *)controller;
 
 @end

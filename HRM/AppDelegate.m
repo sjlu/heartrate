@@ -7,11 +7,15 @@
 #import "UINavigationController+Factory.h"
 #import "UIColor+HeartRate.h"
 #import "MenuTableViewController.h"
+#import "IIViewDeckController.h"
+#import "UIFont+HeartRate.h"
 
 @interface AppDelegate()
 <
 BITHockeyManagerDelegate
 >
+
+@property (nonatomic) IIViewDeckController              *viewDeck;
 
 @end
 
@@ -24,11 +28,21 @@ BITHockeyManagerDelegate
 }
 
 - (void)setup {
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     @{
+       NSForegroundColorAttributeName           :   [UIColor whiteColor],
+       NSFontAttributeName                      :   [UIFont defaultFontWithSize:22.f]
+       }];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     
-    UINavigationController *nav = [UINavigationController navigationController];
-    [nav setViewControllers:@[[[HeartRateViewController alloc] init]]];
+    UINavigationController *nav = [UINavigationController navigationControllerWithController:[[HeartRateViewController alloc] init]];
+    
+    self.viewDeck = [[IIViewDeckController alloc] initWithCenterViewController:nav
+                                                            leftViewController:[[MenuTableViewController alloc] init]];
+    self.viewDeck.leftSize = 125.f;
+    self.window.rootViewController = self.viewDeck;
     
 #if REGISTER_HOCKEY
     [self registerHockey];
