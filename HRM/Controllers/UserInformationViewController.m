@@ -21,7 +21,8 @@
 UITextFieldDelegate
 >
 
-@property (nonatomic) UIScrollView      *scrollView;
+@property (nonatomic) UIScrollView          *scrollView;
+@property (nonatomic) UISegmentedControl    *segmentGender;
 
 @end
 
@@ -48,15 +49,9 @@ const static CGFloat padding = 30;
     self.edgesForExtendedLayout = UIRectEdgeAll;
     self.title = NSLocalizedString(@"Profile Settings", nil);
     
-//    self.navigationController.navigationBar.backgroundColor = [UIColor heartRateRed];
-    
-//    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width - 5.f, 1.f)];
-//    divider.backgroundColor = [UIColor heartRateRed];
-//    [self.view addSubview:divider];
-    
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.clipsToBounds = YES;
-//    self.scrollView.alwaysBounceVertical = YES;
+    //    self.scrollView.alwaysBounceVertical = YES;
     
     UILabel *labelAgeTitle = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                        0,
@@ -72,9 +67,9 @@ const static CGFloat padding = 30;
     NSNumber *age = [NSUserDefaults getAge];
     
     UITextField *textFieldAge = [[UITextField alloc] initWithFrame:CGRectMake(padding,
-                                                                  labelAgeTitle.top + padding * 1.5,
-                                                                  self.view.width - padding * 2,
-                                                                  padding * 1.5)];
+                                                                              labelAgeTitle.top + padding * 1.5,
+                                                                              self.view.width - padding * 2,
+                                                                              padding * 1.5)];
     [textFieldAge applyDefaultStyleWithSize:22.f];
     textFieldAge.tag = ageTag;
     textFieldAge.text = age ? [NSString stringWithFormat:@"%@", age] : @"";
@@ -84,9 +79,9 @@ const static CGFloat padding = 30;
     [self.scrollView addSubview:textFieldAge];
     
     UILabel *labelWeightTitle = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                       textFieldAge.bottom,
-                                                                       self.view.width,
-                                                                       padding * 1.5)];
+                                                                          textFieldAge.bottom,
+                                                                          self.view.width,
+                                                                          padding * 1.5)];
     [labelWeightTitle applyDefaultStyleWithSize:22.f];
     labelWeightTitle.textColor = [UIColor whiteColor];
     
@@ -94,12 +89,12 @@ const static CGFloat padding = 30;
     
     [self.scrollView addSubview:labelWeightTitle];
     
-    NSNumber *weight = [NSUserDefaults getAge];
+    NSNumber *weight = [NSUserDefaults getWeight];
     
     UITextField *textFieldWeight = [[UITextField alloc] initWithFrame:CGRectMake(padding,
-                                                                              labelWeightTitle.top + padding * 1.5,
-                                                                              self.view.width - padding * 2,
-                                                                              padding * 1.5)];
+                                                                                 labelWeightTitle.top + padding * 1.5,
+                                                                                 self.view.width - padding * 2,
+                                                                                 padding * 1.5)];
     [textFieldWeight applyDefaultStyleWithSize:22.f];
     textFieldWeight.tag = weightTag;
     textFieldWeight.text = weight ? [NSString stringWithFormat:@"%@", weight] : @"";
@@ -119,7 +114,7 @@ const static CGFloat padding = 30;
     
     [self.scrollView addSubview:labelHeightTitle];
     
-    NSNumber *height = [NSUserDefaults getAge];
+    NSNumber *height = [NSUserDefaults getHeight];
     
     UITextField *textFieldHeight = [[UITextField alloc] initWithFrame:CGRectMake(padding,
                                                                                  labelHeightTitle.top + padding * 1.5,
@@ -144,17 +139,30 @@ const static CGFloat padding = 30;
     
     [self.scrollView addSubview:labelGenderTitle];
     
-    NSNumber *gender = [NSUserDefaults getAge];
+    NSString *gender = [NSUserDefaults getGender];
     
-    UISegmentedControl *textFieldGender = [UISegmentedControl defaultSegmentedControlWithItems:@[@"Male", @"Female"]];
-    textFieldGender.frame = CGRectMake(padding,
-                                       labelGenderTitle.top + padding * 1.5,
-                                       self.view.width - padding * 2,
-                                       padding * 1.5);
-    textFieldGender.tag = genderTag;
-    [self.scrollView addSubview:textFieldGender];
+    self.segmentGender = [UISegmentedControl defaultSegmentedControlWithItems:@[@"Male", @"Female"]];
+    self.segmentGender.frame = CGRectMake(padding,
+                                     labelGenderTitle.top + padding * 1.5,
+                                     self.view.width - padding * 2,
+                                     padding * 1.5);
+    self.segmentGender.tag = genderTag;
+    [self.scrollView addSubview:self.segmentGender];
     
-    self.scrollView.contentSize = CGSizeMake(self.view.width, textFieldGender.bottom + padding);
+    if (gender) {
+        if ([gender isEqualToString:@"Male"]) {
+            self.segmentGender.selectedSegmentIndex = 0;
+        }
+        else if([gender isEqualToString:@"Female"]) {
+            self.segmentGender.selectedSegmentIndex = 1;
+        }
+    }
+    
+    [self.segmentGender addTarget:self
+                      action:@selector(genderChanged)
+            forControlEvents:UIControlEventValueChanged];
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.width, self.segmentGender.bottom + padding);
     
     [self.view addSubview:self.scrollView];
     
@@ -162,8 +170,12 @@ const static CGFloat padding = 30;
                                                                           action:@selector(endEditing:)];
     [self.view addGestureRecognizer:tap];
     //Separate Controllers
-    //TODO:Add list of broadcasting devices and show current device
-    //TODO:Allow user to set resting heart rate
+    //TODO:Allow user to set resting heart rate?
+}
+
+- (void)genderChanged {
+    NSString *item = [self.segmentGender titleForSegmentAtIndex:self.segmentGender.selectedSegmentIndex];
+    [NSUserDefaults setGender:item];
 }
 
 - (void)keyboardDidShow {
@@ -181,8 +193,22 @@ const static CGFloat padding = 30;
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterNoStyle];
-    NSNumber * myNumber = [f numberFromString:textField.text];
-    [NSUserDefaults setAge:myNumber];
+    NSNumber *myNumber = [f numberFromString:textField.text];
+    
+    switch (textField.tag) {
+        case ageTag:
+            [NSUserDefaults setAge:myNumber];
+            break;
+        case weightTag:
+            [NSUserDefaults setWeight:myNumber];
+            break;
+        case heightTag:
+            [NSUserDefaults setHeight:myNumber];
+            break;
+        default:
+            break;
+    }
+    
     [textField resignFirstResponder];
 }
 

@@ -12,6 +12,13 @@
 
 + (NSNumber *)getAge;
 + (void)setAge:(NSNumber *)age;
++ (NSNumber *)getWeight;
++ (void)setWeight:(NSNumber *)weight;
++ (NSNumber *)getHeight;
++ (void)setHeight:(NSNumber *)height;
++ (NSString *)getGender;
++ (void)setGender:(NSString *)gender;
+
 
 + (NSNumber *)getMaxHeartRate;
 

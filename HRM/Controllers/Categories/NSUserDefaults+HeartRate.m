@@ -11,6 +11,9 @@
 @implementation NSUserDefaults (HeartRate)
 
 static NSString * const kAgeKey = @"Age";
+static NSString * const kWeightKey = @"Weight";
+static NSString * const kHeightKey = @"Height";
+static NSString * const kGenderKey = @"Gender";
 
 + (NSNumber *)getAge {
     return (NSNumber *)[self _getValueForKey:kAgeKey];
@@ -18,6 +21,30 @@ static NSString * const kAgeKey = @"Age";
 
 + (void)setAge:(NSNumber *)age {
     [self _setValue:age forKey:kAgeKey];
+}
+
++ (NSNumber *)getWeight {
+    return (NSNumber *)[self _getValueForKey:kWeightKey];
+}
+
++ (void)setWeight:(NSNumber *)weight {
+    [self _setValue:weight forKey:kWeightKey];
+}
+
++ (NSNumber *)getHeight {
+    return (NSNumber *)[self _getValueForKey:kHeightKey];
+}
+
++ (void)setHeight:(NSNumber *)height {
+    [self _setValue:height forKey:kHeightKey];
+}
+
++ (NSString *)getGender {
+    return (NSString *)[self _getValueForKey:kGenderKey];
+}
+
++ (void)setGender:(NSString *)gender {
+    [self _setValue:gender forKey:kGenderKey];
 }
 
 + (NSNumber *)getMaxHeartRate {
