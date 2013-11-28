@@ -1,3 +1,3 @@
-[submodule "submodules/RESideMenu"]
-	path = submodules/RESideMenu
-	url = git@github.com:romaonthego/RESideMenu.git
+[submodule "submodules/ViewDeck"]
+	path = submodules/ViewDeck
+	url = git@github.com:Inferis/ViewDeck.git
