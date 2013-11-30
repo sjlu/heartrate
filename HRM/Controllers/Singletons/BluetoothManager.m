@@ -125,13 +125,13 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
 #pragma mark - CBCentralManager delegate methods
 
 // Invoked when the central manager's state is updated.
-- (void) centralManagerDidUpdateState:(CBCentralManager *)central
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     [self isLECapableHardware];
 }
 
 // Invoked when the central discovers heart rate peripheral while scanning.
-- (void) centralManager:(CBCentralManager *)central
+- (void)centralManager:(CBCentralManager *)central
   didDiscoverPeripheral:(CBPeripheral *)aPeripheral
       advertisementData:(NSDictionary *)advertisementData
                    RSSI:(NSNumber *)RSSI
