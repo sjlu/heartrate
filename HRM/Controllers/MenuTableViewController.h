@@ -12,4 +12,9 @@
 
 @interface MenuTableViewController : HRMViewController
 
+/**
+ *  We retain the heart rate to keep the timers going
+ */
+@property (nonatomic, readonly)     UINavigationController         *navHeartRate;
+
 @end

@@ -165,7 +165,7 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
 
 // Invoked when a connection is succesfully created with the peripheral.
 // Discover available services on the peripheral
-- (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
 {
     NSLog(@"connected");
     [aPeripheral setDelegate:self];
@@ -174,10 +174,12 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
 
 // Invoked when an existing connection with the peripheral is torn down.
 // Reset local variables
-- (void) centralManager:(CBCentralManager *)central
+- (void)centralManager:(CBCentralManager *)central
 didDisconnectPeripheral:(CBPeripheral *)aPeripheral
                   error:(NSError *)error
 {
+    [self startScan];
+    NSLog(@"Disconnect from peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
     if (self.peripheral) {
         [self.peripheral setDelegate:nil];
         self.peripheral = nil;
@@ -185,7 +187,7 @@ didDisconnectPeripheral:(CBPeripheral *)aPeripheral
 }
 
 // Invoked when the central manager fails to create a connection with the peripheral.
-- (void) centralManager:(CBCentralManager *)central
+- (void)centralManager:(CBCentralManager *)central
 didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
                   error:(NSError *)error
 {
@@ -200,9 +202,9 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
 
 // Invoked upon completion of a -[discoverServices:] request.
 // Discover available characteristics on interested services
-- (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
+- (void)peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
 {
-    for (CBService *aService in aPeripheral.services) {
+    for(CBService *aService in aPeripheral.services) {
         NSLog(@"Service found with UUID: %@", aService.UUID);
         
         /* Heart Rate Service */
@@ -224,7 +226,7 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
 
 // Invoked upon completion of a -[discoverCharacteristics:forService:] request.
 // Perform appropriate operations on interested characteristics
-- (void) peripheral:(CBPeripheral *)aPeripheral
+- (void)peripheral:(CBPeripheral *)aPeripheral
 didDiscoverCharacteristicsForService:(CBService *)service
               error:(NSError *)error
 {

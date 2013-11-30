@@ -11,5 +11,6 @@
 @interface UIViewController (HeartRate)
 
 - (void)setTintColor:(UIColor *)tintColor;
+- (void)setBackgroundColor:(UIColor *)color;
 
 @end

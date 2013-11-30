@@ -1,19 +1,24 @@
-//
-//  UISegmentedControl+HeartRate.m
-//  heartrate
-//
-//  Created by Jonathan Grana on 11/28/13.
-//  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
-//
-
 #import "UISegmentedControl+HeartRate.h"
+
 #import "UIColor+HeartRate.h"
+#import "UIFont+HeartRate.h"
 
 @implementation UISegmentedControl (HeartRate)
 
 + (instancetype)defaultSegmentedControlWithItems:(NSArray *)items {
     UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:items];
     segment.tintColor = [UIColor whiteColor];
+    UIFont *font = [UIFont defaultFontWithSize:22.0f];
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName : font
+                                 };
+    [segment setTitleTextAttributes:attributes
+                           forState:UIControlStateNormal];
+    
+    for (int i = 0; i < items.count; i++) {
+        [segment setContentOffset:CGSizeMake(0, 3) forSegmentAtIndex:i];
+    }
+    
     return segment;
 }
 

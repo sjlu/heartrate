@@ -104,7 +104,7 @@ const static CGFloat padding = 16.f;
         self.heartbeatSpeed = 60 / bpm.floatValue;
     }
     
-    NSLog(@"Heartbeat speed %f", self.heartbeatSpeed);
+//    NSLog(@"Heartbeat speed %f", self.heartbeatSpeed);
     WEAK(self);
     [UIView animateWithDuration:1
                           delay:0.f

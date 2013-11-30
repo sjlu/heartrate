@@ -32,6 +32,7 @@ UITableViewDelegate
 @property (strong, readwrite, nonatomic)    UITableView     *tableView;
 @property (nonatomic)                       NSArray         *items;
 @property (nonatomic)                       NSArray         *images;
+@property (nonatomic, readwrite)            UINavigationController         *navHeartRate;
 
 @end
 
@@ -73,6 +74,13 @@ UITableViewDelegate
     // Dispose of any resources that can be recreated.
 }
 
+- (UINavigationController *)navHeartRate {
+    if (!_navHeartRate) {
+        _navHeartRate = [UINavigationController navigationControllerWithController:[[HeartRateViewController alloc] init]];
+    }
+    return _navHeartRate;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -112,8 +120,7 @@ UITableViewDelegate
     [self.viewDeckController toggleLeftViewAnimated:YES];
     switch (indexPath.row) {
         case heartRateTag: {
-            self.viewDeckController.centerController =
-            [UINavigationController navigationControllerWithController:[[HeartRateViewController alloc] init]];
+            self.viewDeckController.centerController = _navHeartRate;
 //            self.sideMenuViewController.contentViewController = [[UserInformationViewController alloc] init];
             break;
         }

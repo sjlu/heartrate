@@ -10,21 +10,57 @@
 
 @implementation NSUserDefaults (HeartRate)
 
-static NSString * const kAgeKey = @"Age";
 static NSString * const kWeightKey = @"Weight";
 static NSString * const kHeightKey = @"Height";
 static NSString * const kGenderKey = @"Gender";
+static NSString * const kWeightUnitKey = @"WeightUnit";
+static NSString * const kBirthdayKey = @"Birthday";
 
-+ (NSNumber *)getAge {
-    return (NSNumber *)[self _getValueForKey:kAgeKey];
++ (NSDate *)getBirthday {
+    return (NSDate *)[self _getValueForKey:kBirthdayKey];
 }
 
-+ (void)setAge:(NSNumber *)age {
-    [self _setValue:age forKey:kAgeKey];
++ (void)setBirthday:(NSDate *)birthday {
+    [self _setValue:birthday forKey:kBirthdayKey];
+}
+
++ (NSNumber *)getAge {
+    NSDate *birthday = [self getBirthday];
+    if (birthday) {
+        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:birthday];
+        return [NSNumber numberWithInt:interval / 31536000];
+    }
+    return nil;
+}
+
++ (NSNumber *)getWeightUnit {
+    return (NSNumber *)[self _getValueForKey:kWeightUnitKey];
+}
+
++ (void)setWeightUnit:(NSNumber *)weightUnit {
+    [self _setValue:weightUnit forKey:kWeightUnitKey];
 }
 
 + (NSNumber *)getWeight {
     return (NSNumber *)[self _getValueForKey:kWeightKey];
+}
+
++ (NSNumber *)getWeightInKg {
+    NSNumber *weightUnit = [self getWeightUnit];
+    NSNumber *weight = nil;
+    if (weightUnit) {
+        weight = (NSNumber *)[self _getValueForKey:kWeightKey];
+        switch (weightUnit.integerValue) {
+            case pounds:
+                weight = [NSNumber numberWithDouble:weight.integerValue / 2.20462];
+                break;
+                
+            default:
+                break;
+        }
+    }
+
+    return weight;
 }
 
 + (void)setWeight:(NSNumber *)weight {
@@ -39,16 +75,20 @@ static NSString * const kGenderKey = @"Gender";
     [self _setValue:height forKey:kHeightKey];
 }
 
-+ (NSString *)getGender {
-    return (NSString *)[self _getValueForKey:kGenderKey];
++ (NSNumber *)getGender {
+    return (NSNumber *)[self _getValueForKey:kGenderKey];
 }
 
-+ (void)setGender:(NSString *)gender {
++ (void)setGender:(NSNumber *)gender {
     [self _setValue:gender forKey:kGenderKey];
 }
 
 + (NSNumber *)getMaxHeartRate {
-    return [NSNumber numberWithInteger:220 - self.getAge.integerValue];
+    NSNumber *age = self.getAge;
+    if (age) {
+        return [NSNumber numberWithInteger:220 - self.getAge.integerValue];
+    }
+    return [NSNumber numberWithInteger:220];
 }
 
 + (NSObject *)_getValueForKey:(NSString *)key {

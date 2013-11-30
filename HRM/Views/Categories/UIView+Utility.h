@@ -27,6 +27,7 @@
 
 - (CGPoint)boundsCenter;
 
-- (void)applyRoundedCornersForCorners:(UIRectCorner)corners withRadius:(CGFloat)radius;
+- (void)applyRoundedCornersForCorners:(UIRectCorner)corners
+                           withRadius:(CGFloat)radius;
 
 @end

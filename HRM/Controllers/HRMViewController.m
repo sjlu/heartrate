@@ -4,6 +4,8 @@
 
 @interface HRMViewController ()
 
+@property (nonatomic)       BOOL        keyboardIsShowing;
+
 @end
 
 @implementation HRMViewController
@@ -41,6 +43,7 @@
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
+    if (!self.keyboardIsShowing) {
     CGRect endRect = [(NSValue *)[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 
     WEAK(self);
@@ -51,13 +54,14 @@
                         options:(UIViewAnimationOptions)[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
                      animations:^ {
                          weak_self.view.height -= endRect.size.height;
-//                         weak_self.navigationController.navigationBar.top = -64.f;
                      }
                      completion:^(BOOL __unused finished) {
                          if (finished) {
                              [weak_self keyboardDidShow];
+                             weak_self.keyboardIsShowing = YES;
                          }
                      }];
+    }
 }
 
 - (void)keyboardDidShow {}
@@ -65,6 +69,7 @@
 - (void)keyboardDidHide {}
 
 - (void)keyboardWillHide:(NSNotification *)notification {
+    if (self.keyboardIsShowing) {
     CGRect endRect =
     [(NSValue *)[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
@@ -74,11 +79,12 @@
                         options:(UIViewAnimationOptions)[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
                      animations:^ {
                          weak_self.view.height += endRect.size.height;
-//                         weak_self.navigationController.navigationBar.top = 0;
                      }
                      completion:^(BOOL __unused finished) {
-                         [self keyboardDidHide];
+                         [weak_self keyboardDidHide];
+                         weak_self.keyboardIsShowing = NO;
                      }];
+    }
 }
 
 - (void)unregisterFromKeyboardNotifications {
