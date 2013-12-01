@@ -8,14 +8,15 @@
 
 #import "MenuTableViewController.h"
 
-#import "UIColor+HeartRate.h"
-#import "UILabel+HeartRate.h"
-#import "UserInformationViewController.h"
-#import "IIViewDeckController.h"
-#import "UINavigationController+Factory.h"
+#import "HRMNavigationController.h"
 #import "HeartRateViewController.h"
-#import "UIImage+Factory.h"
+#import "IIViewDeckController.h"
 #import "MenuItemCell.h"
+#import "UIColor+HeartRate.h"
+#import "UIImage+Factory.h"
+#import "UILabel+HeartRate.h"
+#import "UINavigationController+Factory.h"
+#import "UserInformationViewController.h"
 
 typedef NS_ENUM(NSInteger, menuTags) {
     heartRateTag,
@@ -32,7 +33,7 @@ UITableViewDelegate
 @property (strong, readwrite, nonatomic)    UITableView     *tableView;
 @property (nonatomic)                       NSArray         *items;
 @property (nonatomic)                       NSArray         *images;
-@property (nonatomic, readwrite)            UINavigationController         *navHeartRate;
+@property (nonatomic, readwrite)            HRMNavigationController         *navHeartRate;
 
 @end
 
@@ -74,9 +75,9 @@ UITableViewDelegate
     // Dispose of any resources that can be recreated.
 }
 
-- (UINavigationController *)navHeartRate {
+- (HRMNavigationController *)navHeartRate {
     if (!_navHeartRate) {
-        _navHeartRate = [UINavigationController navigationControllerWithController:[[HeartRateViewController alloc] init]];
+        _navHeartRate = [HRMNavigationController navigationControllerWithController:[[HeartRateViewController alloc] init]];
     }
     return _navHeartRate;
 }

@@ -80,7 +80,7 @@
         [time appendString:[NSString stringWithFormat:@"%02d:", duration.unsignedIntegerValue
                             / secondsInHour]];
     }
-    [time appendString:[NSString stringWithFormat:@"%02d:", duration.unsignedIntegerValue / 60]];
+    [time appendString:[NSString stringWithFormat:@"%02d:", (duration.unsignedIntegerValue / 60) % 60]];
     [time appendString:[NSString stringWithFormat:@"%02d", duration.unsignedIntegerValue % 60]];
     
     return time.copy;

@@ -17,6 +17,7 @@
     if (self) {
         self.bpm = bpm;
         self.time = [NSDate new];
+        self.zone = zone;
     }
     
     return self;

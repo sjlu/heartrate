@@ -3,11 +3,12 @@
 #import "UIColor+HeartRate.h"
 #import "UIImage+Factory.h"
 #import "IIViewDeckController.h"
+#import "HRMNavigationController.h"
 
 @implementation UINavigationController (Factory)
 
 + (instancetype)navigationControllerWithController:(UIViewController *)controller {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    HRMNavigationController *nav = [[HRMNavigationController alloc] initWithRootViewController:controller];
     nav.navigationBar.backgroundColor = [UIColor clearColor];
     [nav.navigationBar setBackgroundImage:[UIImage new]
                             forBarMetrics:UIBarMetricsDefault];

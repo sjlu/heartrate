@@ -30,4 +30,6 @@
 - (void)applyRoundedCornersForCorners:(UIRectCorner)corners
                            withRadius:(CGFloat)radius;
 
+- (void)centerSubviewsHorizontally;
+
 @end

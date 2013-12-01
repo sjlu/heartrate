@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, heartZones) {
 
 @property (nonatomic)       NSNumber        *minBPM;
 @property (nonatomic)       NSNumber        *maxBPM;
+@property (nonatomic)       NSNumber        *number;
 @property (nonatomic)       NSString        *name;
 @property (nonatomic)       NSString        *percentageString;
 @property (nonatomic)       CGFloat         percentage;

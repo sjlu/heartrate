@@ -63,11 +63,8 @@
         }
         else {
             subview.tintColor = tintColor;
-            if (subview.subviews.count < 1) {
-                subview.backgroundColor = tintColor;
-            }
         }
-            [self updateSubview:subview.subviews tintColor:tintColor];
+        [self updateSubview:subview.subviews tintColor:tintColor];
     }
 }
 

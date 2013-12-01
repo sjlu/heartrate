@@ -1,3 +1,6 @@
 [submodule "submodules/ViewDeck"]
 	path = submodules/ViewDeck
 	url = git@github.com:Inferis/ViewDeck.git
+[submodule "submodules/core-plot"]
+	path = submodules/core-plot
+	url = git@github.com:djw/core-plot.git

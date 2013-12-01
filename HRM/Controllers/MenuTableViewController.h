@@ -10,11 +10,13 @@
 
 #import "HRMViewController.h"
 
+@class HRMNavigationController;
+
 @interface MenuTableViewController : HRMViewController
 
 /**
  *  We retain the heart rate to keep the timers going
  */
-@property (nonatomic, readonly)     UINavigationController         *navHeartRate;
+@property (nonatomic, readonly)     HRMNavigationController         *navHeartRate;
 
 @end

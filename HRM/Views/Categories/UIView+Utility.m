@@ -84,4 +84,10 @@
     self.layer.mask = maskLayer;
 }
 
+- (void)centerSubviewsHorizontally {
+    for (UIView *subview in self.subviews) {
+        subview.center = CGPointMake(self.boundsCenter.x, subview.center.y);
+    }
+}
+
 @end

@@ -25,6 +25,19 @@
     }
 }
 
+
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
 #pragma mark - Keyboard
 
 - (BOOL)shouldObserveKeyboard {

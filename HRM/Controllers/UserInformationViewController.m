@@ -201,7 +201,14 @@ const static CGFloat padding = 30;
                                      padding * 1.5);
     self.segmentGender.tag = genderTag;
     [self.scrollView addSubview:self.segmentGender];
-    self.segmentGender.selectedSegmentIndex = gender.integerValue;
+    
+    if (gender) {
+        self.segmentGender.selectedSegmentIndex = gender.integerValue;
+    }
+    else {
+        self.segmentGender.selectedSegmentIndex = 0;
+        [self genderChanged];
+    }
     
     [self.segmentGender addTarget:self
                       action:@selector(genderChanged)

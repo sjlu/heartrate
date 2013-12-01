@@ -2,23 +2,23 @@
 
 #import "UserInformationViewController.h"
 
-#import "UILabel+HeartRate.h"
-#import "UIImage+Factory.h"
-#import "UIView+Utility.h"
-#import "NSUserDefaults+HeartRate.h"
-#import "UIColor+HeartRate.h"
-#import "NSArray+HeartRate.h"
-#import "UIViewController+HeartRate.h"
-#import "UIButton+HeartRate.h"
-
 #import "BluetoothManager.h"//Needed for constants
-
 #import "HeartBeatVerticalChart.h"
-#import "HeartRateContainer.h"
-
-#import "HeartRateZone.h"
-#import "HeartRateSession.h"
 #import "HeartRateBeat.h"
+#import "HeartRateContainer.h"
+#import "HeartRateGraph.h"
+#import "HeartRateSession.h"
+#import "HeartRateZone.h"
+#import "IIViewDeckController.h"
+#import "NSArray+HeartRate.h"
+#import "NSUserDefaults+HeartRate.h"
+#import "UIButton+HeartRate.h"
+#import "UIColor+HeartRate.h"
+#import "UIImage+Factory.h"
+#import "UILabel+HeartRate.h"
+#import "UIView+Utility.h"
+#import "UIViewController+HeartRate.h"
+#import "UIFont+HeartRate.h"
 
 @interface HeartRateViewController ()
 
@@ -34,6 +34,7 @@
 @property (nonatomic)   UILabel                     *timeLabel;
 @property (nonatomic)   HeartRateSession            *session;
 
+@property (nonatomic)   HeartRateGraph              *heartGraph;
 
 //TODO: Update Vertical Chart, zones and status
 @property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
@@ -63,28 +64,6 @@ static const CGFloat padding = 30.f;
     self.textAnimation.type = kCATransitionFade;
     self.textAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
-    self.heartRateContainer = [[HeartRateContainer alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
-    
-    //TODO: Mave status to it's own view
-    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, self.view.width, 150)];
-    [self.statusLabel applyDefaultStyleWithSize:32.f];
-    self.statusLabel.text = NSLocalizedString(@"Searching...", nil);
-    [self.heartRateContainer addSubview:self.statusLabel];
-    
-    self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, self.view.width, 150)];
-    [self.heartRateLabel applyDefaultStyleWithSize:124.f];
-    self.heartRateLabel.text = NSLocalizedString(@"...", nil);
-    [self.heartRateContainer addSubview:self.heartRateLabel];
-    
-    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.heartRateLabel.bottom + 10, self.view.width, 40)];
-    [self.zoneLabel applyDefaultStyleWithSize:32.f];
-    [self.heartRateContainer addSubview:self.zoneLabel];
-    
-    [self.view addSubview:self.heartRateContainer];
-    
-    self.heartVerticalChart = [[HeartBeatVerticalChart alloc] initWithFrame:CGRectMake(self.view.width - 32.f, 64.f, 32.f, self.view.height - 64.f - padding * 1.5)];
-    [self.view addSubview:self.heartVerticalChart];
-    
     self.startButton = [UIButton defaultButtonWithFrame:CGRectMake(-1, self.view.height - padding * 1.5, self.view.width / 2 + 2, padding * 1.5 + 1) andTitle:NSLocalizedString(@"Start", nil)];
     self.startButton.layer.borderWidth = 1.f;
     self.startButton.layer.borderColor = [UIColor heartRateRed].CGColor;
@@ -103,20 +82,21 @@ static const CGFloat padding = 30.f;
     
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.width, 44)];
     [self.timeLabel applyDefaultStyleWithSize:40.f];
+    self.timeLabel.clipsToBounds = NO;
     self.timeLabel.text = @"00:00";
     [self.view addSubview:self.timeLabel];
     
     self.averageLabel = [[UILabel alloc] initWithFrame:CGRectMake(-1, self.timeLabel.bottom, self.view.width / 2 + 2, 54.f)];
     [self.averageLabel applyDefaultStyleWithSize:30.f];
     self.averageLabel.text = @"0";
-//    self.averageLabel.layer.borderWidth = 1.f;
-//    self.averageLabel.layer.borderColor = [UIColor heartRateRed].CGColor;
+    //    self.averageLabel.layer.borderWidth = 1.f;
+    //    self.averageLabel.layer.borderColor = [UIColor heartRateRed].CGColor;
     [self.view addSubview:self.averageLabel];
     
-    UILabel *averageTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, self.averageLabel.bottom - self.averageLabel.height / 2.5, self.averageLabel.width, self.averageLabel.height / 2)];
+    UILabel *averageTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, self.averageLabel.height - self.averageLabel.height / 2.5, self.averageLabel.width, self.averageLabel.height / 2)];
     [averageTitleLable applyDefaultStyleWithSize:12.f];
     averageTitleLable.text = NSLocalizedString(@"Average BPM", nil);
-    [self.view addSubview:averageTitleLable];
+    [self.averageLabel addSubview:averageTitleLable];
     
     self.caloriesLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width / 2-1, self.timeLabel.bottom, self.view.width / 2 + 2, 54.f)];
     [self.caloriesLabel applyDefaultStyleWithSize:30.f];
@@ -125,11 +105,38 @@ static const CGFloat padding = 30.f;
     //    self.averageLabel.layer.borderColor = [UIColor heartRateRed].CGColor;
     [self.view addSubview:self.caloriesLabel];
     
-    UILabel *calorieTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(self.caloriesLabel.left, self.caloriesLabel.bottom - self.caloriesLabel.height / 2.5, self.caloriesLabel.width, self.caloriesLabel.height / 2)];
+    UILabel *calorieTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, self.caloriesLabel.height - self.caloriesLabel.height / 2.5, self.caloriesLabel.width, self.caloriesLabel.height / 2)];
     [calorieTitleLable applyDefaultStyleWithSize:12.f];
     calorieTitleLable.text = NSLocalizedString(@"Calories Burned", nil);
-    [self.view addSubview:calorieTitleLable];
+    [self.caloriesLabel addSubview:calorieTitleLable];
     
+    self.heartRateContainer = [[HeartRateContainer alloc] initWithFrame:CGRectMake(0, self.averageLabel.bottom, self.view.width, 130.f)];
+    
+    //TODO: Mave status to it's own view
+    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 120)];
+    [self.statusLabel applyDefaultStyleWithSize:32.f];
+    self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.statusLabel.text = NSLocalizedString(@"Searching...", nil);
+    [self.heartRateContainer addSubview:self.statusLabel];
+    
+    self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
+    [self.heartRateLabel applyDefaultStyleWithSize:124.f];
+    self.heartRateLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    self.heartRateLabel.text = NSLocalizedString(@"...", nil);
+    [self.heartRateContainer addSubview:self.heartRateLabel];
+    
+    self.zoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.heartRateLabel.bottom + 10, self.view.width, 40)];
+    [self.zoneLabel applyDefaultStyleWithSize:32.f];
+    self.zoneLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self.heartRateContainer addSubview:self.zoneLabel];
+    
+    [self.view addSubview:self.heartRateContainer];
+    
+    //    self.heartVerticalChart = [[HeartBeatVerticalChart alloc] initWithFrame:CGRectMake(self.view.width - 32.f, 64.f, 32.f, self.view.height - 64.f - padding * 1.5)];
+    //    [self.view addSubview:self.heartVerticalChart];
+    
+    self.heartGraph = [[HeartRateGraph alloc] initWithFrame:CGRectMake(0, self.view.height / 2, self.view.width, self.view.height / 2 - padding * 1.5)];
+    [self.view addSubview:self.heartGraph];
     
     //Observe heart beat updates
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -140,16 +147,76 @@ static const CGFloat padding = 30.f;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    WEAK(self);
+    //    WEAK(self);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSNumber *maxHeartRate = [NSUserDefaults getMaxHeartRate];
         if (maxHeartRate.intValue >= 220) {
-            //Ask user to fill out profile
+            //TODO:Ask user to fill out profile
             
             //[weak_self toggleSettings];
         }
     });
+}
+
+- (void)viewWillLayoutSubviews {
+    
+    self.startButton.frame = CGRectMake(-1, self.view.height - padding * 1.5, self.view.width / 2 + 2, padding * 1.5 + 1);
+    self.resetButton.frame = CGRectMake(self.view.width / 2, self.view.height - padding * 1.5, self.view.width / 2 + 1, padding * 1.5 + 1);
+    
+    
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+//        self.averageLabel.top = 10;
+        self.averageLabel.top = 10;
+        self.averageLabel.width = self.view.width / 5;
+        self.timeLabel.font = [UIFont defaultFontWithSize:30.f];
+        self.heartRateLabel.font = [UIFont defaultFontWithSize:94.f];
+        //    self.averageTitleLable.frame = CGRectMake(0, self.averageLabel.bottom - self.averageLabel.height / 2.5, self.averageLabel.width, self.averageLabel.height / 2);
+        self.timeLabel.left = self.averageLabel.right;
+        self.timeLabel.width = self.view.width / 5;
+        self.caloriesLabel.left = self.timeLabel.right;
+        self.caloriesLabel.top = 10;
+        self.caloriesLabel.width = self.view.width / 5;
+        
+        self.heartRateContainer.frame = CGRectMake(self.caloriesLabel.right, - 30, self.view.width - self.caloriesLabel.right, self.view.height - padding * 1.5);
+        self.navigationController.navigationBar.hidden = YES;
+        self.heartGraph.height = self.view.height - self.averageLabel.height - self.startButton.height - 10;
+        self.heartGraph.top = self.averageLabel.bottom;
+        self.viewDeckController.enabled = NO;
+        self.zoneLabel.hidden = YES;
+    }
+    else {
+        self.navigationController.navigationBar.hidden = NO;
+        self.viewDeckController.enabled = YES;
+        self.zoneLabel.hidden = NO;
+        self.timeLabel.font = [UIFont defaultFontWithSize:40.f];
+        self.heartRateLabel.font = [UIFont defaultFontWithSize:124.f];
+        self.averageLabel.left = 0;
+        self.averageLabel.top = self.caloriesLabel.top = self.timeLabel.bottom;
+        self.averageLabel.width = self.view.width / 2;
+        self.caloriesLabel.left = self.view.width / 2;
+        self.caloriesLabel.width = self.view.width / 2;
+        self.timeLabel.frame = CGRectMake(0, 20, self.view.width, 44);
+        self.heartRateContainer.frame = CGRectMake(0, self.averageLabel.bottom, self.view.width, self.view.height - self.averageLabel.bottom - (self.view.height / 2 - padding * 1.5));
+        self.heartGraph.frame = CGRectMake(0, self.view.height / 2, self.view.width, self.view.height / 2 - padding * 1.5);
+    }
+    [self.averageLabel centerSubviewsHorizontally];
+    [self.caloriesLabel centerSubviewsHorizontally];
+    
+    
+}
+
+-(BOOL)shouldAutorotate {
+    //    return NO;
+    return !self.viewDeckController.isAnySideOpen;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 #pragma mark - Selector Methods
@@ -211,11 +278,13 @@ static const CGFloat padding = 30.f;
     self.heartRateLabel.text = [NSString stringWithFormat:@"%@", beats];
     
     HeartRateZone *currentZone = [[NSArray heartRateZones] currentZoneForBPM:beats];
-    [self.session addBeat:[[HeartRateBeat alloc] initWithBpm:beats
-                                                     andZone:currentZone]];
+    HeartRateBeat *beat = [[HeartRateBeat alloc] initWithBpm:beats
+                                                     andZone:currentZone];
+    [self.session addBeat:beat];
     
-    if ([currentZone.name isEqualToString:self.currentZone.name]) {
-        [self sendZoneNotification:currentZone];
+    //Send notification on zone change
+    if (![currentZone.name isEqualToString:self.currentZone.name] && self.timer) {
+        [self sendZoneNotification:beat];
     }
     self.currentZone = currentZone;
     
@@ -253,7 +322,12 @@ static const CGFloat padding = 30.f;
     WEAK(self);
     [UIView animateWithDuration:1.f
                      animations:^{
-                         self.tintColor = currentZone.zone == resting ? [UIColor heartRateRed] : [UIColor whiteColor];
+                         if (currentZone) {
+                             self.tintColor = currentZone.zone == resting ? [UIColor heartRateRed] : [UIColor whiteColor];
+                         }
+                         else {
+                             self.tintColor = [UIColor heartRateRed];
+                         }
                          weak_self.backgroundColor = background;
                          if (background == [UIColor whiteColor]) {
                              [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
@@ -266,10 +340,11 @@ static const CGFloat padding = 30.f;
     self.statusLabel.text = @"";
 }
 
-- (void)sendZoneNotification:(HeartRateZone *)zone {
+- (void)sendZoneNotification:(HeartRateBeat *)beat {
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
     if (state == UIApplicationStateBackground)
     {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
         if (localNotif == nil)
             return;
@@ -277,11 +352,9 @@ static const CGFloat padding = 30.f;
         localNotif.timeZone = [NSTimeZone defaultTimeZone];
         
         // Notification details
-        localNotif.alertBody = zone.name;
-        // Set the action button
-        localNotif.alertAction = @"View";
+        localNotif.alertBody = [NSString stringWithFormat:@"%@ - Zone %@ - %@ BPM", beat.zone.name, beat.zone.number, beat.bpm];
         
-        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        localNotif.soundName = [NSString stringWithFormat:@"zone_%@.caf", beat.zone.number];
         
         // Schedule the notification
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];

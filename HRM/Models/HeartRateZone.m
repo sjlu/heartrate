@@ -21,26 +21,32 @@
         
         if (percentage >= .89) {
             self.name = NSLocalizedString(@"Max", nil);
+            self.number = [NSNumber numberWithInt:6];
             self.zone = max;
         }
         else if (percentage >= .79) {
             self.name = NSLocalizedString(@"Anaerobic", nil);
+            self.number = [NSNumber numberWithInt:5];
             self.zone = anaerobic;
         }
         else if (percentage >= .69) {
             self.name = NSLocalizedString(@"Aerobic", nil);
+            self.number = [NSNumber numberWithInt:4];
             self.zone = aerobic;
         }
         else if (percentage >= .59) {
             self.name = NSLocalizedString(@"Weight Control", nil);
+            self.number = [NSNumber numberWithInt:3];
             self.zone = weightControl;
         }
         else if (percentage >= .49) {
             self.name = NSLocalizedString(@"Moderate", nil);
+            self.number = [NSNumber numberWithInt:2];
             self.zone = moderate;
         }
         else {
             self.name = NSLocalizedString(@"Resting", nil);
+            self.number = [NSNumber numberWithInt:1];
             self.zone = resting;
         }
         

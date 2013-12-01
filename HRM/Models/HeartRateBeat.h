@@ -14,6 +14,7 @@
 
 @property (nonatomic)   NSNumber        *bpm;
 @property (nonatomic)   NSDate          *time;
+@property (nonatomic)   HeartRateZone   *zone;
 
 - (instancetype)initWithBpm:(NSNumber *)bpm andZone:(HeartRateZone *)zone;
 
