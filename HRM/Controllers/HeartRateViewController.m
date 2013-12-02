@@ -38,7 +38,6 @@
 
 //TODO: Update Vertical Chart, zones and status
 @property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
-@property (nonatomic)   UILabel                     *statusLabel;
 @property (nonatomic)   UILabel                     *zoneLabel;
 
 @end
@@ -111,13 +110,6 @@ static const CGFloat padding = 30.f;
     [self.caloriesLabel addSubview:calorieTitleLable];
     
     self.heartRateContainer = [[HeartRateContainer alloc] initWithFrame:CGRectMake(0, self.averageLabel.bottom, self.view.width, 130.f)];
-    
-    //TODO: Mave status to it's own view
-    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 120)];
-    [self.statusLabel applyDefaultStyleWithSize:32.f];
-    self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.statusLabel.text = NSLocalizedString(@"Searching...", nil);
-    [self.heartRateContainer addSubview:self.statusLabel];
     
     self.heartRateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
     [self.heartRateLabel applyDefaultStyleWithSize:124.f];
@@ -202,16 +194,16 @@ static const CGFloat padding = 30.f;
     }
     [self.averageLabel centerSubviewsHorizontally];
     [self.caloriesLabel centerSubviewsHorizontally];
-    
-    
 }
 
--(BOOL)shouldAutorotate {
+
+
+- (BOOL)shouldAutorotate {
     //    return NO;
     return !self.viewDeckController.isAnySideOpen;
 }
 
--(NSUInteger)supportedInterfaceOrientations {
+- (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskAll;
 }
 
@@ -329,15 +321,16 @@ static const CGFloat padding = 30.f;
                              self.tintColor = [UIColor heartRateRed];
                          }
                          weak_self.backgroundColor = background;
-                         if (background == [UIColor whiteColor]) {
-                             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+                         if (weak_self.navigationController == weak_self.viewDeckController.centerController) {
+                             if (background == [UIColor whiteColor]) {
+                                 [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+                             }
+                             else {
+                                 [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+                             }
                          }
-                         else {
-                             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-                         }
+                         
                      }];
-    
-    self.statusLabel.text = @"";
 }
 
 - (void)sendZoneNotification:(HeartRateBeat *)beat {

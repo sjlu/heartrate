@@ -8,6 +8,7 @@
 
 #import "MenuTableViewController.h"
 
+#import "BluetoothManager.h"
 #import "HRMNavigationController.h"
 #import "HeartRateViewController.h"
 #import "IIViewDeckController.h"
@@ -34,10 +35,18 @@ UITableViewDelegate
 @property (nonatomic)                       NSArray         *items;
 @property (nonatomic)                       NSArray         *images;
 @property (nonatomic, readwrite)            HRMNavigationController         *navHeartRate;
+@property (nonatomic)                       UILabel         *deviceName;
+@property (nonatomic)                       UILabel         *deviceBattery;
 
 @end
 
 @implementation MenuTableViewController
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kBluetoothNotificationBattery
+                                                  object:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -48,14 +57,11 @@ UITableViewDelegate
     self.view.backgroundColor = [UIColor heartRateDarkRed];
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 91, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 91, self.view.frame.size.width, 54 * 2) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.opaque = NO;
-        tableView.backgroundColor = [UIColor clearColor];
-        
-        tableView.backgroundView = nil;
         tableView.backgroundColor = [UIColor clearColor];
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         tableView.bounces = NO;
@@ -64,16 +70,51 @@ UITableViewDelegate
     
     [self.view addSubview:self.tableView];
     
+    self.deviceName = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 200, 44)];
+    [self.deviceName applyDefaultStyleWithSize:20.f];
+    self.deviceName.numberOfLines = 0;
+    self.deviceName.textAlignment = NSTextAlignmentLeft;
+    self.deviceName.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.deviceName];
+    
+    self.deviceBattery = [[UILabel alloc] initWithFrame:CGRectMake(10, 64, 200, 24)];
+    [self.deviceBattery applyDefaultStyleWithSize:20.f];
+    self.deviceBattery.textAlignment = NSTextAlignmentLeft;
+    self.deviceBattery.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.deviceBattery];
+    
     [self.tableView reloadData];
     
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                animated:YES
+                          scrollPosition:UITableViewScrollPositionTop];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateBattery:)
+                                                 name:kBluetoothNotificationBattery
+                                               object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    if ([BluetoothManager shared].deviceName) {
+        self.deviceName.text = [BluetoothManager shared].deviceName;
+    }
+    else if ([BluetoothManager shared].manufactorName) {
+        self.deviceName.text = [BluetoothManager shared].manufactorName;
+    }
 }
+
+#pragma mark - Selectors
+
+- (void)updateBattery:(NSNotification *)notification {
+    NSNumber *percentage = notification.object;
+    
+    self.deviceBattery.text = [NSString stringWithFormat:@"%@%% Battery",percentage];
+}
+
+#pragma mark - Properties
 
 - (HRMNavigationController *)navHeartRate {
     if (!_navHeartRate) {

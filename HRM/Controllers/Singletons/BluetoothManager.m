@@ -11,6 +11,8 @@ CBPeripheralDelegate
 @property (nonatomic)   NSMutableArray      *heartRateMonitors;
 @property (nonatomic)   CBCentralManager    *manager;
 @property (nonatomic)   CBPeripheral        *peripheral;
+@property (nonatomic)   NSString            *deviceName;
+@property (nonatomic)   NSString            *manufactorName;
 
 #if !BLUETOOTH
 @property (nonatomic)   NSTimer             *timer;
@@ -122,6 +124,16 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
                                                         object:beat];
 }
 
+// Update UI with heart rate data received from device
+- (void)updateWithBatteryData:(NSData *)data
+{
+    const UInt8 *reportData = data.bytes;
+    UInt8 battery = reportData[0];
+    NSNumber *beat = [NSNumber numberWithUnsignedChar:battery];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBluetoothNotificationBattery
+                                                        object:beat];
+}
+
 #pragma mark - CBCentralManager delegate methods
 
 // Invoked when the central manager's state is updated.
@@ -132,13 +144,13 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
 
 // Invoked when the central discovers heart rate peripheral while scanning.
 - (void)centralManager:(CBCentralManager *)central
-  didDiscoverPeripheral:(CBPeripheral *)aPeripheral
-      advertisementData:(NSDictionary *)advertisementData
-                   RSSI:(NSNumber *)RSSI
+ didDiscoverPeripheral:(CBPeripheral *)aPeripheral
+     advertisementData:(NSDictionary *)advertisementData
+                  RSSI:(NSNumber *)RSSI
 {
-    NSMutableArray *peripherals = [self mutableArrayValueForKey:@"heartRateMonitors"];
+    //There was no reason for using the NSKeyValueCoding Protocol
     if(![self.heartRateMonitors containsObject:aPeripheral])
-        [peripherals addObject:aPeripheral];
+        [self.heartRateMonitors addObject:aPeripheral];
     
     // Retrieve already known devices
     
@@ -153,7 +165,7 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
     NSLog(@"Retrieved peripheral: %u - %@", [peripherals count], peripherals);
     [self stopScan];
     // If there are any known devices, automatically connect to it.
-    if([peripherals count] >= 1) {
+    if([peripherals count] > 0) {
         self.peripheral = [peripherals objectAtIndex:0];
         [self.manager connectPeripheral:self.peripheral
                                 options:[NSDictionary dictionaryWithObject:
@@ -167,6 +179,8 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
 // Discover available services on the peripheral
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBluetoothNotificationDeviceConnected
+                                                        object:nil];
     NSLog(@"connected");
     [aPeripheral setDelegate:self];
     [aPeripheral discoverServices:nil];
@@ -176,9 +190,13 @@ SHARED_SINGLETON_IMPLEMENTATION(BluetoothManager);
 // Reset local variables
 - (void)centralManager:(CBCentralManager *)central
 didDisconnectPeripheral:(CBPeripheral *)aPeripheral
-                  error:(NSError *)error
+                 error:(NSError *)error
 {
+    //Start scanning and trying to reconnect to device
     [self startScan];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBluetoothNotificationDeviceDisconnected
+                                                        object:nil];
     NSLog(@"Disconnect from peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
     if (self.peripheral) {
         [self.peripheral setDelegate:nil];
@@ -187,9 +205,8 @@ didDisconnectPeripheral:(CBPeripheral *)aPeripheral
 }
 
 // Invoked when the central manager fails to create a connection with the peripheral.
-- (void)centralManager:(CBCentralManager *)central
-didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
-                  error:(NSError *)error
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
+                 error:(NSError *)error
 {
     NSLog(@"Fail to connect to peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
     if (self.peripheral) {
@@ -213,12 +230,17 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
         }
         
         /* Device Information Service */
-        if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]) {
+        else if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]) {
             [aPeripheral discoverCharacteristics:nil forService:aService];
         }
         
         /* GAP (Generic Access Profile) for Device Name */
-        if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
+        else if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
+            [aPeripheral discoverCharacteristics:nil forService:aService];
+        }
+        
+        /* Battery Information */
+        else if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"180F"]]) {
             [aPeripheral discoverCharacteristics:nil forService:aService];
         }
     }
@@ -228,7 +250,7 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
 // Perform appropriate operations on interested characteristics
 - (void)peripheral:(CBPeripheral *)aPeripheral
 didDiscoverCharacteristicsForService:(CBService *)service
-              error:(NSError *)error
+             error:(NSError *)error
 {
     if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
@@ -253,7 +275,7 @@ didDiscoverCharacteristicsForService:(CBService *)service
         }
     }
     
-    if ([service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
+    else if ([service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             // Read device name
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]) {
@@ -263,12 +285,23 @@ didDiscoverCharacteristicsForService:(CBService *)service
         }
     }
     
-    if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]) {
+    else if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]) {
         for (CBCharacteristic *aChar in service.characteristics) {
             // Read manufacturer name
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
                 [aPeripheral readValueForCharacteristic:aChar];
                 NSLog(@"Found a Device Manufacturer Name Characteristic");
+            }
+        }
+    }
+    
+    else if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180F"]]) {
+        for (CBCharacteristic *aChar in service.characteristics) {
+            // Read battery level
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A19"]]) {
+                [self.peripheral setNotifyValue:YES forCharacteristic:aChar];
+                [aPeripheral readValueForCharacteristic:aChar];
+                NSLog(@"Found a Battery Level");
             }
         }
     }
@@ -288,6 +321,16 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
             [self updateWithHRMData:characteristic.value];
         }
     }
+    
+    // Updated value for battery measurement received
+    else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A19"]]) {
+        if(characteristic.value || !error) {
+            NSLog(@"received battery value: %@", characteristic.value);
+            // Update UI with battery data
+            [self updateWithBatteryData:characteristic.value];
+        }
+    }
+    
     // Value for body sensor location received
     else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]) {
         NSData * updatedValue = characteristic.value;
@@ -326,17 +369,14 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     // Value for device Name received
     else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]) {
-        NSString * deviceName = [[NSString alloc] initWithData:characteristic.value
-                                                      encoding:NSUTF8StringEncoding];
-        NSLog(@"Device Name = %@", deviceName);
-        [[NSNotificationCenter defaultCenter] postNotificationName:kBluetoothNotificationFoundDevice
-                                                            object:deviceName];
+        self.deviceName = [[NSString alloc] initWithData:characteristic.value
+                                                encoding:NSUTF8StringEncoding];
+        
     }
     // Value for manufacturer name received
     else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) {
-        NSString *manufacturer = [[NSString alloc] initWithData:characteristic.value
-                                                       encoding:NSUTF8StringEncoding];
-        NSLog(@"Manufacturer Name = %@", manufacturer);
+        self.manufactorName = [[NSString alloc] initWithData:characteristic.value
+                                                    encoding:NSUTF8StringEncoding];
     }
 }
 

@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, heartZones) {
-    max = 1,
-    anaerobic,
-    aerobic,
-    weightControl,
+    resting = 1,
     moderate,
-    resting
+    weightControl,
+    aerobic,
+    anaerobic,
+    max
 };
 
 @interface HeartRateZone : NSObject

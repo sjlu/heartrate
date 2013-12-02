@@ -1,5 +1,4 @@
 /* New strings */
-"Age" = "Age";
 
 /* New strings */
 "..." = "...";
@@ -12,4 +11,23 @@
 "Weight Control" = "Weight Control";
 
 /* New strings */
-"Target Heart Zone" = "Target Heart Zone";
+
+/* New strings */
+"Average BPM" = "Average BPM";
+"Birthday" = "Birthday";
+"Calories Burned" = "Calories Burned";
+"Detail" = "Detail"; /* Detail */
+"First2" = "First2"; /* First */
+"FirstLike" = "FirstLike"; /* First */
+"Gender" = "Gender";
+"Height" = "Height";
+"Master" = "Master"; /* Master */
+"Profile Settings" = "Profile Settings";
+"Reset" = "Reset";
+"Second" = "Second"; /* Second */
+"Set Birthday" = "Set Birthday";
+"Set Height" = "Set Height";
+"Set Weight" = "Set Weight";
+"Start" = "Start";
+"Stop" = "Stop";
+"Weight" = "Weight";

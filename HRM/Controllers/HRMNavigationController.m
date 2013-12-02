@@ -26,6 +26,10 @@
     return [self.topViewController preferredInterfaceOrientationForPresentation];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return [self.topViewController preferredStatusBarStyle];
+}
+
 - (BOOL)wantsFullScreenLayout{
     return YES;
 }

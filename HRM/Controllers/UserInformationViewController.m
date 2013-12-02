@@ -49,6 +49,8 @@ const static CGFloat padding = 30;
 {
     [super viewDidLoad];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     self.view.backgroundColor = [UIColor heartRateRed];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     self.title = NSLocalizedString(@"Profile Settings", nil);
