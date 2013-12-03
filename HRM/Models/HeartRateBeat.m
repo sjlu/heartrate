@@ -2,22 +2,31 @@
 //  HeartRateBeat.m
 //  heartrate
 //
-//  Created by Jonathan Grana on 11/29/13.
+//  Created by Jonathan Grana on 12/2/13.
 //  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
 //
 
 #import "HeartRateBeat.h"
 
+#import "CoreDataManager.h"
+#import "HeartRateSession.h"
+#import "HeartRateZone.h"
+
 @implementation HeartRateBeat
+
+@dynamic bpm;
+@dynamic time;
+@dynamic session;
+@dynamic rateZone;
 
 - (instancetype)initWithBpm:(NSNumber *)bpm
                     andZone:(HeartRateZone *)zone {
-    self = [self init];
+    self = [NSEntityDescription insertNewObjectForEntityForName:@"HeartRateBeat" inManagedObjectContext:[CoreDataManager shared].managedObjectContext];
     
     if (self) {
         self.bpm = bpm;
         self.time = [NSDate new];
-        self.zone = zone;
+        self.rateZone = zone;
     }
     
     return self;

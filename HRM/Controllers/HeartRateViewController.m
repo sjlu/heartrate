@@ -1,5 +1,7 @@
 #import "HeartRateViewController.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 #import "UserInformationViewController.h"
 
 #import "BluetoothManager.h"//Needed for constants
@@ -40,6 +42,8 @@
 @property (nonatomic)   HeartBeatVerticalChart      *heartVerticalChart;
 @property (nonatomic)   UILabel                     *zoneLabel;
 
+@property (nonatomic)	AVAudioPlayer               *avSound;
+
 @end
 
 @implementation HeartRateViewController
@@ -63,17 +67,13 @@ static const CGFloat padding = 30.f;
     self.textAnimation.type = kCATransitionFade;
     self.textAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
-    self.startButton = [UIButton defaultButtonWithFrame:CGRectMake(-1, self.view.height - padding * 1.5, self.view.width / 2 + 2, padding * 1.5 + 1) andTitle:NSLocalizedString(@"Start", nil)];
-    self.startButton.layer.borderWidth = 1.f;
-    self.startButton.layer.borderColor = [UIColor heartRateRed].CGColor;
+    self.startButton = [UIButton defaultButtonWithFrame:CGRectMake(0, self.view.height - padding * 1.5, self.view.width / 2-1, padding * 1.5 + 1) andTitle:NSLocalizedString(@"Start", nil)];
     [self.startButton addTarget:self
                          action:@selector(toggleTime)
                forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.startButton];
     
-    self.resetButton = [UIButton defaultButtonWithFrame:CGRectMake(self.view.width / 2, self.view.height - padding * 1.5, self.view.width / 2 + 1, padding * 1.5 + 1) andTitle:NSLocalizedString(@"Reset", nil)];
-    self.resetButton.layer.borderWidth = 1.f;
-    self.resetButton.layer.borderColor = [UIColor heartRateRed].CGColor;
+    self.resetButton = [UIButton defaultButtonWithFrame:CGRectMake(self.view.width / 2 + 1, self.view.height - padding * 1.5, self.view.width / 2 - 1, padding * 1.5 + 1) andTitle:NSLocalizedString(@"Reset", nil)];
     [self.resetButton addTarget:self
                          action:@selector(resetTime)
                forControlEvents:UIControlEventTouchUpInside];
@@ -153,12 +153,12 @@ static const CGFloat padding = 30.f;
 
 - (void)viewWillLayoutSubviews {
     
-    self.startButton.frame = CGRectMake(-1, self.view.height - padding * 1.5, self.view.width / 2 + 2, padding * 1.5 + 1);
-    self.resetButton.frame = CGRectMake(self.view.width / 2, self.view.height - padding * 1.5, self.view.width / 2 + 1, padding * 1.5 + 1);
+    self.startButton.frame = CGRectMake(0, self.view.height - padding * 1.5, self.view.width / 2 - .5, padding * 1.5);
+    self.resetButton.frame = CGRectMake(self.view.width / 2 + .5, self.view.height - padding * 1.5, self.view.width / 2 - .5, padding * 1.5);
     
     
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
-//        self.averageLabel.top = 10;
+        //        self.averageLabel.top = 10;
         self.averageLabel.top = 10;
         self.averageLabel.width = self.view.width / 5;
         self.timeLabel.font = [UIFont defaultFontWithSize:30.f];
@@ -266,61 +266,67 @@ static const CGFloat padding = 30.f;
     NSNumber *beats = notification.object;
     
     [self.heartRateLabel.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
-    [self.zoneLabel.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
     self.heartRateLabel.text = [NSString stringWithFormat:@"%@", beats];
     
-    HeartRateZone *currentZone = [[NSArray heartRateZones] currentZoneForBPM:beats];
-    HeartRateBeat *beat = [[HeartRateBeat alloc] initWithBpm:beats
-                                                     andZone:currentZone];
-    [self.session addBeat:beat];
-    
-    //Send notification on zone change
-    if (![currentZone.name isEqualToString:self.currentZone.name] && self.timer) {
-        [self sendZoneNotification:beat];
-    }
-    self.currentZone = currentZone;
-    
+    HeartRateZone *currentZone = nil;
     UIColor *background = [UIColor whiteColor];
     
-    if (currentZone) {
-        self.zoneLabel.text = currentZone.name;
+    if (self.session) {
+        [self.zoneLabel.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
         
-        //        NSLog(@"%@", currentZone);
-        //TODO: Move color to zone
-        switch (currentZone.zone) {
-            case max:
-                background = [UIColor heartRateRed];
-                break;
-            case anaerobic:
-                background = [UIColor heartRateRed];
-                break;
-            case aerobic:
-                background = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
-                break;
-            case weightControl:
-                background = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
-                break;
-            case moderate:
-                background = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
-                break;
-            case resting:
-                background = [UIColor whiteColor];
-                break;
-            default:
-                break;
+        
+        //TODO: Grab and store in session instead of querying db everytime
+        currentZone = [[NSArray heartRateZones] currentZoneForBPM:beats];
+        HeartRateBeat *beat = [[HeartRateBeat alloc] initWithBpm:beats
+                                                         andZone:currentZone];
+        [self.session addBeat:beat];
+        
+        //Send notification on zone change
+        if (![currentZone.name isEqualToString:self.currentZone.name] && self.timer) {
+            [self sendZoneNotification:beat];
+        }
+        self.currentZone = currentZone;
+        
+        if (currentZone) {
+            self.zoneLabel.text = currentZone.name;
+            
+            //        NSLog(@"%@", currentZone);
+            //TODO: Move color to zone
+            switch (currentZone.heartZone) {
+                case max:
+                    background = [UIColor heartRateRed];
+                    break;
+                case anaerobic:
+                    background = [UIColor heartRateRed];
+                    break;
+                case aerobic:
+                    background = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
+                    break;
+                case weightControl:
+                    background = [UIColor colorWithRed:(98/255.f) green:(111/255.f) blue:(145/255.f) alpha:1];
+                    break;
+                case moderate:
+                    background = [UIColor colorWithRed:(127/255.f) green:(164/255.f) blue:(116/255.f) alpha:1];
+                    break;
+                case resting:
+                    background = [UIColor whiteColor];
+                    break;
+                default:
+                    break;
+            }
         }
     }
     
     WEAK(self);
     [UIView animateWithDuration:1.f
                      animations:^{
+                         weak_self.backgroundColor = background;
                          if (currentZone) {
-                             self.tintColor = currentZone.zone == resting ? [UIColor heartRateRed] : [UIColor whiteColor];
+                             self.tintColor = currentZone.heartZone == resting ? [UIColor heartRateRed] : [UIColor whiteColor];
                          }
                          else {
                              self.tintColor = [UIColor heartRateRed];
                          }
-                         weak_self.backgroundColor = background;
                          if (weak_self.navigationController == weak_self.viewDeckController.centerController) {
                              if (background == [UIColor whiteColor]) {
                                  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
@@ -334,9 +340,10 @@ static const CGFloat padding = 30.f;
 }
 
 - (void)sendZoneNotification:(HeartRateBeat *)beat {
+    NSString *soundFile = [NSString stringWithFormat:@"zone_%@", beat.rateZone.number];
+    
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-    if (state == UIApplicationStateBackground)
-    {
+    if (state == UIApplicationStateBackground) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
         if (localNotif == nil)
@@ -345,12 +352,18 @@ static const CGFloat padding = 30.f;
         localNotif.timeZone = [NSTimeZone defaultTimeZone];
         
         // Notification details
-        localNotif.alertBody = [NSString stringWithFormat:@"%@ - Zone %@ - %@ BPM", beat.zone.name, beat.zone.number, beat.bpm];
+        localNotif.alertBody = [NSString stringWithFormat:@"%@ - Zone %@ - %@ BPM", beat.rateZone.name, beat.rateZone.number, beat.bpm];
         
-        localNotif.soundName = [NSString stringWithFormat:@"zone_%@.caf", beat.zone.number];
+        localNotif.soundName = [NSString stringWithFormat:@"%@.caf", soundFile];
         
         // Schedule the notification
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
+    else {
+        NSURL *soundURL = [[NSBundle mainBundle] URLForResource:soundFile
+                                                  withExtension:@"caf"];
+        self.avSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+        [self.avSound play];
     }
 }
 

@@ -2,29 +2,30 @@
 //  HeartRateSession.m
 //  heartrate
 //
-//  Created by Jonathan Grana on 11/26/13.
+//  Created by Jonathan Grana on 12/3/13.
 //  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
 //
 
 #import "HeartRateSession.h"
-
 #import "HeartRateBeat.h"
+#import "HeartRateZone.h"
+
+#import "CoreDataManager.h"
 #import "NSUserDefaults+HeartRate.h"
-
-@interface HeartRateSession()
-
-@property (nonatomic)       NSNumber            *total;
-
-@end
 
 @implementation HeartRateSession
 
+@dynamic startTime;
+@dynamic endTime;
+@dynamic total;
+@dynamic beats;
+@dynamic rateZones;
+
 - (instancetype)initWithTime:(NSDate *)startTime {
-    self = [self init];
+    self = [NSEntityDescription insertNewObjectForEntityForName:@"HeartRateSession" inManagedObjectContext:[CoreDataManager shared].managedObjectContext];
     
     if (self) {
         self.startTime = startTime;
-        self.beats = [NSMutableArray array];
         self.total = [NSNumber numberWithDouble:0.0];
     }
     
@@ -32,7 +33,9 @@
 }
 
 - (void)addBeat:(HeartRateBeat *)beat {
-    [self.beats addObject:beat];
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.beats];
+    [tempSet addObject:beat];
+    self.beats = tempSet;
     self.total = [NSNumber numberWithDouble:(self.total.doubleValue + beat.bpm.doubleValue)];
 }
 

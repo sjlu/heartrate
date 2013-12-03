@@ -2,13 +2,16 @@
 //  HeartRateZone.h
 //  heartrate
 //
-//  Created by Jonathan Grana on 11/24/13.
+//  Created by Jonathan Grana on 12/3/13.
 //  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-typedef NS_ENUM(NSUInteger, heartZones) {
+@class HeartRateBeat, HeartRateSession;
+
+typedef NS_ENUM(int16_t, heartZones) {
     resting = 1,
     moderate,
     weightControl,
@@ -17,17 +20,37 @@ typedef NS_ENUM(NSUInteger, heartZones) {
     max
 };
 
-@interface HeartRateZone : NSObject
+@interface HeartRateZone : NSManagedObject
 
-@property (nonatomic)       NSNumber        *minBPM;
-@property (nonatomic)       NSNumber        *maxBPM;
-@property (nonatomic)       NSNumber        *number;
-@property (nonatomic)       NSString        *name;
-@property (nonatomic)       NSString        *percentageString;
-@property (nonatomic)       CGFloat         percentage;
-@property (nonatomic)       heartZones      zone;
+@property (nonatomic, retain) NSNumber * minBpm;
+@property (nonatomic, retain) NSNumber * maxBpm;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * percentage;
+@property (nonatomic, retain) NSNumber * number;
+@property (nonatomic, retain) NSNumber * age;
+@property (nonatomic, retain) NSDate * startTime;
+@property (nonatomic, retain) NSDate * endTime;
+@property (nonatomic, retain) NSSet *beats;
+@property (nonatomic, retain) NSSet *sessions;
+@property (nonatomic) heartZones heartZone;
 
 -(instancetype)initWithMaxBpm:(NSNumber *)maxBpm
                 andPercentage:(CGFloat)percentage;
+
+-(NSString *)percentageString;
+
+@end
+
+@interface HeartRateZone (CoreDataGeneratedAccessors)
+
+- (void)addBeatsObject:(HeartRateBeat *)value;
+- (void)removeBeatsObject:(HeartRateBeat *)value;
+- (void)addBeats:(NSSet *)values;
+- (void)removeBeats:(NSSet *)values;
+
+- (void)addSessionsObject:(HeartRateSession *)value;
+- (void)removeSessionsObject:(HeartRateSession *)value;
+- (void)addSessions:(NSSet *)values;
+- (void)removeSessions:(NSSet *)values;
 
 @end

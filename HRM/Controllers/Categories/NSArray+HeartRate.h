@@ -9,6 +9,11 @@
 
 @interface NSArray (HeartRate)
 
+/**
+ *  Checks db for default zones for current age, otherwise populates db and returns new zones
+ *
+ *  @return NSArray of heart rate zones
+ */
 +(instancetype)heartRateZones;
 
 - (HeartRateZone *)currentZoneForBPM:(NSNumber *)bpm;

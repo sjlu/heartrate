@@ -18,10 +18,10 @@
         if ([subview isKindOfClass:[UIButton class]]) {
             UIButton *button = (UIButton *)subview;
             [button setTitleColor:color
-                    forState:UIControlStateHighlighted];
+                         forState:UIControlStateHighlighted];
         }
     }
-
+    
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
@@ -48,12 +48,16 @@
             UIImageView *image = (UIImageView *)subview;
             image.tintColor = tintColor;
         }
-        else if ([subview isKindOfClass:[UIButton class]]) {
+        else if ([subview isKindOfClass:[UIButton class]] && ![subview.superview isKindOfClass:[UINavigationBar class]]) {
             UIButton *button = (UIButton *)subview;
-            button.layer.borderColor = tintColor.CGColor;
-            [button setTitleColor:tintColor
+            [button setTitleColor:subview.superview.backgroundColor
                          forState:UIControlStateNormal];
+            [button setTitleColor:tintColor
+                         forState:UIControlStateHighlighted];
             [button setBackgroundImage:[UIImage imageWithColor:tintColor
+                                                  cornerRadius:0.f]
+                              forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageWithColor:subview.superview.backgroundColor
                                                   cornerRadius:0.f]
                               forState:UIControlStateHighlighted];
         }

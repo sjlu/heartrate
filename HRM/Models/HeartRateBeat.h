@@ -2,20 +2,23 @@
 //  HeartRateBeat.h
 //  heartrate
 //
-//  Created by Jonathan Grana on 11/29/13.
+//  Created by Jonathan Grana on 12/2/13.
 //  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@class HeartRateZone;
+@class HeartRateSession, HeartRateZone;
 
-@interface HeartRateBeat : NSObject
+@interface HeartRateBeat : NSManagedObject
 
-@property (nonatomic)   NSNumber        *bpm;
-@property (nonatomic)   NSDate          *time;
-@property (nonatomic)   HeartRateZone   *zone;
+@property (nonatomic, retain) NSNumber * bpm;
+@property (nonatomic, retain) NSDate * time;
+@property (nonatomic, retain) HeartRateSession *session;
+@property (nonatomic, retain) HeartRateZone *rateZone;
 
-- (instancetype)initWithBpm:(NSNumber *)bpm andZone:(HeartRateZone *)zone;
+- (instancetype)initWithBpm:(NSNumber *)bpm
+                    andZone:(HeartRateZone *)zone;
 
 @end

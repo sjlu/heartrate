@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		09187601184A7E1000C0A996 /* CPTNumericData+TypeConversions_Generation.py in Resources */ = {isa = PBXBuildFile; fileRef = 09187565184A7E1000C0A996 /* CPTNumericData+TypeConversions_Generation.py */; };
 		09187627184A7E1000C0A996 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 091875B1184A7E1000C0A996 /* license.txt */; };
-		0924D1AD184551290065D3AB /* HeartRateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0924D1AC184551290065D3AB /* HeartRateSession.m */; };
 		092E2BAE184A74F700C3F115 /* HeartRateGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E2BAD184A74F700C3F115 /* HeartRateGraph.m */; };
 		0948EC40183F15C4000D233A /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948EC3F183F15C4000D233A /* UserInformationViewController.m */; };
 		09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BD8184274490045F452 /* UIColor+HeartRate.m */; };
@@ -23,7 +22,6 @@
 		09604BF41842889E0045F452 /* UINavigationController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BF31842889E0045F452 /* UINavigationController+Factory.m */; };
 		09604BF91842BA330045F452 /* localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09604BF81842BA330045F452 /* localization.strings */; };
 		09604BFC1842BD660045F452 /* NSArray+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BFB1842BD660045F452 /* NSArray+HeartRate.m */; };
-		09604BFF1842BD9B0045F452 /* HeartRateZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604BFE1842BD9B0045F452 /* HeartRateZone.m */; };
 		09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C041842DDDF0045F452 /* UIViewController+HeartRate.m */; };
 		09604C081842DF460045F452 /* HeartRateContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09604C071842DF460045F452 /* HeartRateContainer.m */; };
 		09670CAE1843000200A25428 /* HRMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670CAD1843000200A25428 /* HRMViewController.m */; };
@@ -37,7 +35,6 @@
 		09670EA81847CAF000A25428 /* UIFont+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EA71847CAF000A25428 /* UIFont+HeartRate.m */; };
 		09670EAB1847D23D00A25428 /* UISegmentedControl+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EAA1847D23D00A25428 /* UISegmentedControl+HeartRate.m */; };
 		09670EAE1847F20800A25428 /* UIButton+HeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EAD1847F20800A25428 /* UIButton+HeartRate.m */; };
-		09670EB11849271A00A25428 /* HeartRateBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EB01849271A00A25428 /* HeartRateBeat.m */; };
 		09670EB41849655900A25428 /* DatePickerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09670EB31849655900A25428 /* DatePickerContainer.m */; };
 		09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09722955183EFBFC003C4421 /* HeartRateViewController.m */; };
 		0997AEB6184A853300D1AD38 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091874CC184A7DC300C0A996 /* libCorePlot-CocoaTouch.a */; };
@@ -47,6 +44,14 @@
 		0997AEC2184ABAAE00D1AD38 /* zone_4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0997AEBD184ABAAE00D1AD38 /* zone_4.caf */; };
 		0997AEC3184ABAAE00D1AD38 /* zone_5.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0997AEBE184ABAAE00D1AD38 /* zone_5.caf */; };
 		0997AEC6184AC1D600D1AD38 /* HRMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0997AEC5184AC1D600D1AD38 /* HRMNavigationController.m */; };
+		0997AECA184D0B6900D1AD38 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0997AEC9184D0B6900D1AD38 /* AVFoundation.framework */; };
+		0997AECC184D152200D1AD38 /* zone_6.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0997AECB184D152200D1AD38 /* zone_6.caf */; };
+		0997AECF184D569800D1AD38 /* HeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0997AECD184D569700D1AD38 /* HeartRate.xcdatamodeld */; };
+		0997AEE1184D5BE800D1AD38 /* HeartRateBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0997AEE0184D5BE800D1AD38 /* HeartRateBeat.m */; };
+		0997AEE4184D5F8D00D1AD38 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0997AEE3184D5F8D00D1AD38 /* CoreDataManager.m */; };
+		0997AEE6184D6FF600D1AD38 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0997AEE5184D6FF500D1AD38 /* CoreData.framework */; };
+		0997AEE9184E2CC100D1AD38 /* HeartRateZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0997AEE8184E2CC100D1AD38 /* HeartRateZone.m */; };
+		0997AEEC184E2CC100D1AD38 /* HeartRateSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0997AEEB184E2CC100D1AD38 /* HeartRateSession.m */; };
 		09DBC494183F00D10076EC06 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */; };
 		09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC497183F013A0076EC06 /* CoreText.framework */; };
 		09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DBC498183F013A0076EC06 /* QuartzCore.framework */; };
@@ -201,8 +206,6 @@
 		09187630184A7E1F00C0A996 /* CPTPlatformSpecificDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlatformSpecificDefines.h; sourceTree = "<group>"; };
 		09187632184A7E1F00C0A996 /* CPTPlatformSpecificFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlatformSpecificFunctions.h; sourceTree = "<group>"; };
 		09187634184A7E1F00C0A996 /* CPTTextStylePlatformSpecific.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTextStylePlatformSpecific.h; sourceTree = "<group>"; };
-		0924D1AB184551290065D3AB /* HeartRateSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateSession.h; path = Models/HeartRateSession.h; sourceTree = "<group>"; };
-		0924D1AC184551290065D3AB /* HeartRateSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateSession.m; path = Models/HeartRateSession.m; sourceTree = "<group>"; };
 		092E2BAC184A74F700C3F115 /* HeartRateGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateGraph.h; path = Views/HeartRateGraph.h; sourceTree = "<group>"; };
 		092E2BAD184A74F700C3F115 /* HeartRateGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateGraph.m; path = Views/HeartRateGraph.m; sourceTree = "<group>"; };
 		0948EC3E183F15C4000D233A /* UserInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInformationViewController.h; path = Controllers/UserInformationViewController.h; sourceTree = "<group>"; };
@@ -229,8 +232,6 @@
 		09604BF81842BA330045F452 /* localization.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = localization.strings; sourceTree = "<group>"; };
 		09604BFA1842BD660045F452 /* NSArray+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+HeartRate.h"; path = "Controllers/Categories/NSArray+HeartRate.h"; sourceTree = "<group>"; };
 		09604BFB1842BD660045F452 /* NSArray+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+HeartRate.m"; path = "Controllers/Categories/NSArray+HeartRate.m"; sourceTree = "<group>"; };
-		09604BFD1842BD9B0045F452 /* HeartRateZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateZone.h; path = Models/HeartRateZone.h; sourceTree = "<group>"; };
-		09604BFE1842BD9B0045F452 /* HeartRateZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateZone.m; path = Models/HeartRateZone.m; sourceTree = "<group>"; };
 		09604C031842DDDF0045F452 /* UIViewController+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+HeartRate.h"; path = "Controllers/Categories/UIViewController+HeartRate.h"; sourceTree = "<group>"; };
 		09604C041842DDDF0045F452 /* UIViewController+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+HeartRate.m"; path = "Controllers/Categories/UIViewController+HeartRate.m"; sourceTree = "<group>"; };
 		09604C061842DF460045F452 /* HeartRateContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateContainer.h; path = Views/HeartRateContainer.h; sourceTree = "<group>"; };
@@ -254,8 +255,6 @@
 		09670EAA1847D23D00A25428 /* UISegmentedControl+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISegmentedControl+HeartRate.m"; path = "Views/Categories/UISegmentedControl+HeartRate.m"; sourceTree = "<group>"; };
 		09670EAC1847F20800A25428 /* UIButton+HeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+HeartRate.h"; path = "Views/Categories/UIButton+HeartRate.h"; sourceTree = "<group>"; };
 		09670EAD1847F20800A25428 /* UIButton+HeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+HeartRate.m"; path = "Views/Categories/UIButton+HeartRate.m"; sourceTree = "<group>"; };
-		09670EAF1849271A00A25428 /* HeartRateBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateBeat.h; path = Models/HeartRateBeat.h; sourceTree = "<group>"; };
-		09670EB01849271A00A25428 /* HeartRateBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateBeat.m; path = Models/HeartRateBeat.m; sourceTree = "<group>"; };
 		09670EB21849655900A25428 /* DatePickerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerContainer.h; path = Views/DatePickerContainer.h; sourceTree = "<group>"; };
 		09670EB31849655900A25428 /* DatePickerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerContainer.m; path = Views/DatePickerContainer.m; sourceTree = "<group>"; };
 		09722954183EFBFC003C4421 /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateViewController.h; path = Controllers/HeartRateViewController.h; sourceTree = "<group>"; };
@@ -267,6 +266,19 @@
 		0997AEBE184ABAAE00D1AD38 /* zone_5.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = zone_5.caf; path = Sounds/zone_5.caf; sourceTree = "<group>"; };
 		0997AEC4184AC1D600D1AD38 /* HRMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRMNavigationController.h; path = Controllers/HRMNavigationController.h; sourceTree = "<group>"; };
 		0997AEC5184AC1D600D1AD38 /* HRMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRMNavigationController.m; path = Controllers/HRMNavigationController.m; sourceTree = "<group>"; };
+		0997AEC7184D074B00D1AD38 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0997AEC9184D0B6900D1AD38 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0997AECB184D152200D1AD38 /* zone_6.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = zone_6.caf; path = Sounds/zone_6.caf; sourceTree = "<group>"; };
+		0997AECE184D569800D1AD38 /* HeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartRate.xcdatamodel; sourceTree = "<group>"; };
+		0997AEDF184D5BE800D1AD38 /* HeartRateBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateBeat.h; path = Models/HeartRateBeat.h; sourceTree = "<group>"; };
+		0997AEE0184D5BE800D1AD38 /* HeartRateBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateBeat.m; path = Models/HeartRateBeat.m; sourceTree = "<group>"; };
+		0997AEE2184D5F8D00D1AD38 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataManager.h; path = Controllers/Singletons/CoreDataManager.h; sourceTree = "<group>"; };
+		0997AEE3184D5F8D00D1AD38 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataManager.m; path = Controllers/Singletons/CoreDataManager.m; sourceTree = "<group>"; };
+		0997AEE5184D6FF500D1AD38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0997AEE7184E2CC100D1AD38 /* HeartRateZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateZone.h; path = Models/HeartRateZone.h; sourceTree = "<group>"; };
+		0997AEE8184E2CC100D1AD38 /* HeartRateZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateZone.m; path = Models/HeartRateZone.m; sourceTree = "<group>"; };
+		0997AEEA184E2CC100D1AD38 /* HeartRateSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartRateSession.h; path = Models/HeartRateSession.h; sourceTree = "<group>"; };
+		0997AEEB184E2CC100D1AD38 /* HeartRateSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartRateSession.m; path = Models/HeartRateSession.m; sourceTree = "<group>"; };
 		09DBC48A183F00D10076EC06 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		09DBC48C183F00D10076EC06 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		09DBC48D183F00D10076EC06 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
@@ -291,6 +303,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0997AEE6184D6FF600D1AD38 /* CoreData.framework in Frameworks */,
+				0997AECA184D0B6900D1AD38 /* AVFoundation.framework in Frameworks */,
 				0997AEB6184A853300D1AD38 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				09DBC49B183F013A0076EC06 /* CoreText.framework in Frameworks */,
 				09DBC49C183F013A0076EC06 /* QuartzCore.framework in Frameworks */,
@@ -484,6 +498,8 @@
 			children = (
 				09604BEC184274A30045F452 /* BluetoothManager.h */,
 				09604BED184274A30045F452 /* BluetoothManager.m */,
+				0997AEE2184D5F8D00D1AD38 /* CoreDataManager.h */,
+				0997AEE3184D5F8D00D1AD38 /* CoreDataManager.m */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -508,12 +524,12 @@
 		09604BD5184273940045F452 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				09604BFD1842BD9B0045F452 /* HeartRateZone.h */,
-				09604BFE1842BD9B0045F452 /* HeartRateZone.m */,
-				0924D1AB184551290065D3AB /* HeartRateSession.h */,
-				0924D1AC184551290065D3AB /* HeartRateSession.m */,
-				09670EAF1849271A00A25428 /* HeartRateBeat.h */,
-				09670EB01849271A00A25428 /* HeartRateBeat.m */,
+				0997AEDF184D5BE800D1AD38 /* HeartRateBeat.h */,
+				0997AEE0184D5BE800D1AD38 /* HeartRateBeat.m */,
+				0997AEEA184E2CC100D1AD38 /* HeartRateSession.h */,
+				0997AEEB184E2CC100D1AD38 /* HeartRateSession.m */,
+				0997AEE7184E2CC100D1AD38 /* HeartRateZone.h */,
+				0997AEE8184E2CC100D1AD38 /* HeartRateZone.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -614,6 +630,7 @@
 				0997AEBC184ABAAE00D1AD38 /* zone_3.caf */,
 				0997AEBD184ABAAE00D1AD38 /* zone_4.caf */,
 				0997AEBE184ABAAE00D1AD38 /* zone_5.caf */,
+				0997AECB184D152200D1AD38 /* zone_6.caf */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -655,6 +672,7 @@
 		22A8517B153E8F3E000B4042 = {
 			isa = PBXGroup;
 			children = (
+				0997AECD184D569700D1AD38 /* HeartRate.xcdatamodeld */,
 				09670EA01847C57100A25428 /* Images.xcassets */,
 				09604B8C18418B6D0045F452 /* submodules */,
 				09DBC485183F009F0076EC06 /* ThirdParty */,
@@ -675,6 +693,9 @@
 		22A85189153E8F3E000B4042 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0997AEE5184D6FF500D1AD38 /* CoreData.framework */,
+				0997AEC9184D0B6900D1AD38 /* AVFoundation.framework */,
+				0997AEC7184D074B00D1AD38 /* AudioToolbox.framework */,
 				09DBC497183F013A0076EC06 /* CoreText.framework */,
 				09DBC498183F013A0076EC06 /* QuartzCore.framework */,
 				09DBC499183F013A0076EC06 /* Security.framework */,
@@ -795,6 +816,7 @@
 				0997AEC0184ABAAE00D1AD38 /* zone_2.caf in Resources */,
 				09670EA11847C57100A25428 /* Images.xcassets in Resources */,
 				09604BF91842BA330045F452 /* localization.strings in Resources */,
+				0997AECC184D152200D1AD38 /* zone_6.caf in Resources */,
 				0997AEBF184ABAAE00D1AD38 /* zone_1.caf in Resources */,
 				0997AEC2184ABAAE00D1AD38 /* zone_4.caf in Resources */,
 				0997AEC3184ABAAE00D1AD38 /* zone_5.caf in Resources */,
@@ -813,28 +835,30 @@
 				09604BE7184274490045F452 /* UITextField+HeartRate.m in Sources */,
 				09670CAE1843000200A25428 /* HRMViewController.m in Sources */,
 				092E2BAE184A74F700C3F115 /* HeartRateGraph.m in Sources */,
-				0924D1AD184551290065D3AB /* HeartRateSession.m in Sources */,
 				09670EA81847CAF000A25428 /* UIFont+HeartRate.m in Sources */,
+				0997AEEC184E2CC100D1AD38 /* HeartRateSession.m in Sources */,
+				0997AEE1184D5BE800D1AD38 /* HeartRateBeat.m in Sources */,
 				09604BE3184274490045F452 /* UIColor+HeartRate.m in Sources */,
 				09670EA51847C6AD00A25428 /* MenuItemCell.m in Sources */,
 				09722956183EFBFC003C4421 /* HeartRateViewController.m in Sources */,
 				09604BF41842889E0045F452 /* UINavigationController+Factory.m in Sources */,
 				09670E761847B75C00A25428 /* IIViewDeckController.m in Sources */,
+				0997AEE9184E2CC100D1AD38 /* HeartRateZone.m in Sources */,
 				22A85197153E8F3E000B4042 /* main.m in Sources */,
 				09604C081842DF460045F452 /* HeartRateContainer.m in Sources */,
 				09670D1018445B4000A25428 /* MenuTableViewController.m in Sources */,
+				0997AECF184D569800D1AD38 /* HeartRate.xcdatamodeld in Sources */,
 				0997AEC6184AC1D600D1AD38 /* HRMNavigationController.m in Sources */,
 				09670E771847B75C00A25428 /* IIWrapController.m in Sources */,
-				09604BFF1842BD9B0045F452 /* HeartRateZone.m in Sources */,
 				09670EB41849655900A25428 /* DatePickerContainer.m in Sources */,
 				22A8519B153E8F3E000B4042 /* AppDelegate.m in Sources */,
 				09604C051842DDDF0045F452 /* UIViewController+HeartRate.m in Sources */,
 				09604BF1184287BD0045F452 /* HeartBeatVerticalChart.m in Sources */,
-				09670EB11849271A00A25428 /* HeartRateBeat.m in Sources */,
 				09604BE4184274490045F452 /* UIImage+Factory.m in Sources */,
 				09604BE8184274490045F452 /* UIView+Utility.m in Sources */,
 				09604BE5184274490045F452 /* UILabel+HeartRate.m in Sources */,
 				09670EAB1847D23D00A25428 /* UISegmentedControl+HeartRate.m in Sources */,
+				0997AEE4184D5F8D00D1AD38 /* CoreDataManager.m in Sources */,
 				09604BEB184274580045F452 /* NSUserDefaults+HeartRate.m in Sources */,
 				09670E751847B75C00A25428 /* IISideController.m in Sources */,
 				09604BEE184274A30045F452 /* BluetoothManager.m in Sources */,
@@ -1003,6 +1027,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0997AECD184D569700D1AD38 /* HeartRate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0997AECE184D569800D1AD38 /* HeartRate.xcdatamodel */,
+			);
+			currentVersion = 0997AECE184D569800D1AD38 /* HeartRate.xcdatamodel */;
+			path = HeartRate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 22A8517D153E8F3E000B4042 /* Project object */;
 }

@@ -2,34 +2,47 @@
 //  HeartRateSession.h
 //  heartrate
 //
-//  Created by Jonathan Grana on 11/26/13.
+//  Created by Jonathan Grana on 12/3/13.
 //  Copyright (c) 2013 Dev Marvel LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@class HeartRateBeat;
+@class HeartRateBeat, HeartRateZone;
 
-@interface HeartRateSession : NSObject
+@interface HeartRateSession : NSManagedObject
 
-@property (nonatomic)       NSDate              *startTime;
-@property (nonatomic)       NSDate              *endTime;
-@property (nonatomic)       NSMutableArray      *beats;
+@property (nonatomic, retain) NSDate * startTime;
+@property (nonatomic, retain) NSDate * endTime;
+@property (nonatomic, retain) NSNumber * total;
+@property (nonatomic, retain) NSOrderedSet *beats;
+@property (nonatomic, retain) NSSet *rateZones;
 
 - (instancetype)initWithTime:(NSDate *)startTime;
 - (void)addBeat:(HeartRateBeat *)beat;
-
+- (NSNumber *)averageBpm;
+- (NSNumber *)calories;
 - (NSString *)durationString;
-
-/**
- *  Returns number of seconds
- *
- *  @return NSNumber of seconds
- */
 - (NSNumber *)duration;
 
-- (NSNumber *)averageBpm;
+@end
 
-- (NSNumber *)calories;
+@interface HeartRateSession (CoreDataGeneratedAccessors)
+
+- (void)insertObject:(HeartRateBeat *)value inBeatsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromBeatsAtIndex:(NSUInteger)idx;
+- (void)insertBeats:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeBeatsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInBeatsAtIndex:(NSUInteger)idx withObject:(HeartRateBeat *)value;
+- (void)replaceBeatsAtIndexes:(NSIndexSet *)indexes withBeats:(NSArray *)values;
+- (void)addBeatsObject:(HeartRateBeat *)value;
+- (void)removeBeatsObject:(HeartRateBeat *)value;
+- (void)addBeats:(NSOrderedSet *)values;
+- (void)removeBeats:(NSOrderedSet *)values;
+- (void)addRateZonesObject:(HeartRateZone *)value;
+- (void)removeRateZonesObject:(HeartRateZone *)value;
+- (void)addRateZones:(NSSet *)values;
+- (void)removeRateZones:(NSSet *)values;
 
 @end

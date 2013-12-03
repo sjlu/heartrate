@@ -34,12 +34,13 @@ BITHockeyManagerDelegate
        NSFontAttributeName                      :   [UIFont defaultFontWithSize:22.f]
        }];
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
     MenuTableViewController *menu = [[MenuTableViewController alloc] init];
     self.viewDeck = [[IIViewDeckController alloc] initWithCenterViewController:(UIViewController *)menu.navHeartRate
                                                             leftViewController:menu];
     self.viewDeck.leftSize = 125.f;
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
     self.window.rootViewController = self.viewDeck;
     
 #if REGISTER_HOCKEY
