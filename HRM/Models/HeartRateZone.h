@@ -11,6 +11,7 @@
 
 @class HeartRateBeat, HeartRateSession;
 
+//FIXME: Doesn't persist
 typedef NS_ENUM(int16_t, heartZones) {
     resting = 1,
     moderate,

@@ -21,6 +21,7 @@
 #import "UIView+Utility.h"
 #import "UIViewController+HeartRate.h"
 #import "UIFont+HeartRate.h"
+#import "CoreDataManager.h"
 
 @interface HeartRateViewController ()
 
@@ -229,6 +230,8 @@ static const CGFloat padding = 30.f;
     if (self.timer) {
         [self clearTimer];
         self.session.endTime = [NSDate date];
+        
+        [[CoreDataManager shared] saveContext];
     }
     else {
         [self.startButton setTitle:NSLocalizedString(@"Stop", nil)
@@ -274,20 +277,23 @@ static const CGFloat padding = 30.f;
     if (self.session) {
         [self.zoneLabel.layer addAnimation:self.textAnimation forKey:@"changeTextTransition"];
         
+        //TODO: Move default zones generator to HeartRateZones and return set
+        if (self.session.rateZones.count < 1) {
+            self.session.rateZones = [NSSet setWithArray:[NSArray heartRateZones]];
+        }
+        NSArray *zones = self.session.rateZones.allObjects;
         
-        //TODO: Grab and store in session instead of querying db everytime
-        currentZone = [[NSArray heartRateZones] currentZoneForBPM:beats];
+        currentZone = [zones currentZoneForBPM:beats];
         HeartRateBeat *beat = [[HeartRateBeat alloc] initWithBpm:beats
                                                          andZone:currentZone];
         [self.session addBeat:beat];
         
-        //Send notification on zone change
-        if (![currentZone.name isEqualToString:self.currentZone.name] && self.timer) {
-            [self sendZoneNotification:beat];
-        }
         self.currentZone = currentZone;
         
         if (currentZone) {
+            //Send notification on zone change
+            [self sendBeatNotification:beat
+                             withSound:![currentZone.name isEqualToString:self.currentZone.name] && self.timer];
             self.zoneLabel.text = currentZone.name;
             
             //        NSLog(@"%@", currentZone);
@@ -339,9 +345,7 @@ static const CGFloat padding = 30.f;
                      }];
 }
 
-- (void)sendZoneNotification:(HeartRateBeat *)beat {
-    NSString *soundFile = [NSString stringWithFormat:@"zone_%@", beat.rateZone.number];
-    
+- (void)sendBeatNotification:(HeartRateBeat *)beat withSound:(BOOL)sound {
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
     if (state == UIApplicationStateBackground) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
@@ -353,17 +357,21 @@ static const CGFloat padding = 30.f;
         
         // Notification details
         localNotif.alertBody = [NSString stringWithFormat:@"%@ - Zone %@ - %@ BPM", beat.rateZone.name, beat.rateZone.number, beat.bpm];
-        
-        localNotif.soundName = [NSString stringWithFormat:@"%@.caf", soundFile];
+        if (sound) {
+            localNotif.soundName = [NSString stringWithFormat:@"zone_%@.caf", beat.rateZone.number];
+        }
         
         // Schedule the notification
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     }
     else {
-        NSURL *soundURL = [[NSBundle mainBundle] URLForResource:soundFile
-                                                  withExtension:@"caf"];
-        self.avSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-        [self.avSound play];
+        if (sound) {
+            NSURL *soundURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"zone_%@", beat.rateZone.number]
+                                                      withExtension:@"caf"];
+            
+            self.avSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+            [self.avSound play];
+        }
     }
 }
 

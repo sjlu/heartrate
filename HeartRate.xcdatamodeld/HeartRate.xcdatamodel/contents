@@ -11,7 +11,7 @@
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="total" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="beats" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="HeartRateBeat" inverseName="session" inverseEntity="HeartRateBeat" syncable="YES"/>
-        <relationship name="rateZones" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="HeartRateZone" inverseName="sessions" inverseEntity="HeartRateZone" syncable="YES"/>
+        <relationship name="rateZones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeartRateZone" inverseName="sessions" inverseEntity="HeartRateZone" syncable="YES"/>
     </entity>
     <entity name="HeartRateZone" representedClassName="HeartRateZone" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -24,11 +24,11 @@
         <attribute name="percentage" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="beats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeartRateBeat" inverseName="rateZone" inverseEntity="HeartRateBeat" syncable="YES"/>
-        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="HeartRateSession" inverseName="rateZones" inverseEntity="HeartRateSession" syncable="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeartRateSession" inverseName="rateZones" inverseEntity="HeartRateSession" syncable="YES"/>
     </entity>
     <elements>
-        <element name="HeartRateSession" positionX="108" positionY="468" width="128" height="88"/>
-        <element name="HeartRateBeat" positionX="-128" positionY="459" width="128" height="103"/>
-        <element name="HeartRateZone" positionX="-137" positionY="198" width="128" height="118"/>
+        <element name="HeartRateBeat" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HeartRateSession" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HeartRateZone" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
